@@ -1,0 +1,94 @@
+﻿@using LibrarySystem_VA.Web.Models.Books;
+@model BookListViewModel
+
+@section scripts
+{
+    <environment names="Development">
+        <script src="~/view-resources/Views/Books/Index.js" asp-append-version="true"></script>
+    </environment>
+}
+
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-6">
+                <h1>@L("Books")</h1>
+            </div>
+            <div class="col-sm-6">
+                <a class="btn bg-blue float-sm-right" asp-controller="Books" asp-action="CreateOrEdit">
+                    <i class="fa fa-plus-square"></i>
+                    @L("Create")
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    @*Search*@
+                    <div class="card-header">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="abp-advanced-search">
+                                    <form name="searchBookForm" class="form-horizontal" asp-controller="Books" asp-action="Index" method="get">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">                                                
+                                                <button type="submit" class="btn bg-blue btn-search search-button">
+                                                    <span class="fas fa-search" aria-hidden="true"></span>
+                                                </button>
+                                            </div>
+                                            <input class="form-control" type="text" name="searchBooks" placeholder="Search" />
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    @*Table*@
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table id="BooksTable" class="table table-striped table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>@L("BookTitle")</th>
+                                        <th>@L("BookPublisher")</th>
+                                        <th>@L("BookAuthor")</th>
+                                        <th>@L("IsBorrowed")</th>
+                                        <th>@L("BookCategoryName")</th>
+                                        <th style="width: 180px">@L("Actions")</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var Book in Model.Books)
+                                    {
+                                        <tr>
+                                            <td>@Book?.BookTitle</td>
+                                            <td>@Book?.BookPublisher</td>
+                                            <td>@Book?.BookAuthor</td>
+                                            <td>@Book?.IsBorrowed</td>
+                                            <td>@Book.BookCategory?.Name</td>
+                                            <td>
+                                                <button type="button" class="btn btn-sm bg-secondary edit-book" data-book-id="@Book.Id">
+                                                    <i class="fas fa-pencil-alt"></i> Edit
+                                                </button>
+
+                                                <button type="button" class="btn btn-sm bg-danger delete-book" data-book-id="@Book.Id" data-book-title="@Book.BookTitle">
+                                                    <i class="fas fa-trash"></i> Delete
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

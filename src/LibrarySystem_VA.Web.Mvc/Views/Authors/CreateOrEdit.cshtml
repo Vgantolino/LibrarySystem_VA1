@@ -1,0 +1,37 @@
+﻿@using LibrarySystem_VA.Web.Models.Authors;
+@model CreateOrEditAuthorViewModel
+
+@section scripts
+{
+    <environment names="Development">
+        <script src="~/view-resources/Views/Authors/CreateOrEdit.js" asp-append-version="true"></script>
+    </environment>
+}
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <form name="AuthorForm" role="form" class="form-horizontal">
+                            <input type="hidden" name="Id" value="@Model?.Id" />
+                            
+                            <div class="row">
+                                <div class="form-group">
+                                    <label for="AuthorName">Name</label>
+                                    <input type="text" class="form-control" name="Name" value="@Model?.Name" placeholder="Author Name">
+                                </div>
+                            </div>                         
+
+                            <div class="row-buttons">
+                                <button type="button" class="btn btn-default cancel-button">@L("Cancel")</button>
+                                <button type="submit" class="btn btn-primary save-button">@L("Save")</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

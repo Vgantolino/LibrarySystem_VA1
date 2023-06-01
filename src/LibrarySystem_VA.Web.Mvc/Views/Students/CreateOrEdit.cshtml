@@ -1,0 +1,79 @@
+﻿@using LibrarySystem_VA.Web.Models.Students;
+@model CreateOrEditStudentViewModel
+
+@section scripts
+{
+    <environment names="Development">
+        <script src="~/view-resources/Views/Students/CreateOrEdit.js" asp-append-version="true"></script>
+    </environment>
+}
+
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-6">
+                <h1>@L("AddNewStudent")</h1>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                            <form name="StudentForm" role="form" class="form-horizontal">
+                                <input type="hidden" name="Id" value="@Model?.Id"/>
+
+                                <div class="row">
+                                    <div class="form-group">
+                                    @*Student Name*@
+                                        <label for="studentName">Student Name</label>
+                                        <input type="text" class="form-control" name="StudentName" value="@Model?.StudentName" placeholder="Student Name">
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="form-group">
+                                    @*Student Contact Number*@
+                                        <label for="studentContactNumber">Student Contact Number</label>
+                                        <input type="text" class="form-control" name="StudentContactNumber" value="@Model?.StudentContactNumber" placeholder="Student Contact Number">
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="form-group">
+                                    @*Student Email*@
+                                        <label for="studentEmail">Student Email</label>
+                                        <input type="text" class="form-control" name="StudentEmail" value="@Model?.StudentEmail" placeholder="Student Email">
+                                    </div>
+                                </div>
+
+                                @*Department List*@
+                                <div class="row">
+                                    <div class="form-group">
+                                        <label for="DepartmentList">Department List</label>
+                                        @Html.DropDownListFor(
+                                            x => x.DepartmentId,
+                                            Model.DepartmentList.Select(
+                                                d => new SelectListItem {
+                                                    Value = d.Id.ToString(),
+                                                    Text = d.Name
+                                        }), "Select Department", new { @class = "form-control" })
+                                    </div>
+                                </div>
+
+                                @*Save/Cancel Buttons*@
+                                <div class="row-buttons">
+                                        <button type="button" class="btn btn-default cancel-button">@L("Cancel")</button>
+                                        <button type="submit" class="btn btn-primary save-button">@L("Save")</button>
+                                </div>
+                            </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

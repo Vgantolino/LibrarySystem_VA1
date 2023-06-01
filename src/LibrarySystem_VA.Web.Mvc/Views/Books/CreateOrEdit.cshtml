@@ -1,0 +1,79 @@
+﻿@using LibrarySystem_VA.Web.Models.Books;
+@model CreateOrEditBookViewModel
+
+@section scripts
+    {
+    <environment names="Development">
+        <script src="~/view-resources/Views/Books/CreateOrEdit.js" asp-append-version="true"></script>
+    </environment>
+}
+
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-6">
+                <h1>@L("AddNewBooks")</h1>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                     <div class="card-body">
+                        <form name="BookForm" role="form" class="form-horizontal">
+                            <input type="hidden" name="Id" value="@Model?.Id"/>
+                            
+                                    @*Book Title*@
+                                    <div class="row">
+                                        <div class="form-group">                                    
+                                            <label for="bookTitle">Book Title</label>
+                                            <input type="text" class="form-control" id="bookTitle" name="BookTitle" value="@Model?.BookTitle" placeholder="Book Title">
+                                        </div>
+                                    </div>
+
+                                    @*Book Publisher*@
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <label for="bookPublisher">Book Publisher</label>
+                                            <input type="text" class="form-control" id="bookPublisher" name="BookPublisher" value="@Model?.BookPublisher" placeholder="Book Publisher">
+                                        </div>
+                                    </div>
+
+                                    @*Book Author*@
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <label for="bookAuthor">Book Author</label>
+                                            <input type="text" class="form-control" id="bookAuthor" name="BookAuthor" value="@Model?.BookAuthor" placeholder="Book Author">
+                                        </div>
+                                    </div>
+
+                                    @*Book Category List*@
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <label for="BookCategoryList">Book Category List</label>
+                                            @Html.DropDownListFor(
+                                            x => x.BookCategoryId,
+                                            Model.BookCategoryList.Select(
+                                            d => new SelectListItem {
+                                            Value = d.Id.ToString(),
+                                            Text = d.Name
+                                            }), "Select Book Category", new { @class = "form-control" })
+                                        </div>
+                                    </div>
+
+                            @*Save/Cancel Buttons*@
+                            <div class="row-buttons">
+                                <button type="button" class="btn btn-default cancel-button">@L("Cancel")</button>
+                                <button type="submit" class="btn btn-primary save-button">@L("Save")</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

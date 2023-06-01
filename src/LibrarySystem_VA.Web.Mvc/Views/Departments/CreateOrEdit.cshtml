@@ -1,0 +1,37 @@
+﻿@model CreateOrEditDepartmentViewModel
+@using LibrarySystem_VA.Web.Models.Departments;
+
+@section scripts
+{
+    <environment names="Development">
+        <script src="~/view-resources/Views/Departments/CreateOrEdit.js" asp-append-version="true"></script>
+    </environment>
+}
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <form name="DepartmentForm" role="form" class="form-horizontal">
+                            <input type="hidden" name="Id" value="@Model?.Id" />
+                            
+                            <div class="row">
+                                <div class="form-group">
+                                    <label for="DepartmentName">Name</label>
+                                    <input type="text" class="form-control" name="Name" value="@Model?.Name" placeholder="Department Name">
+                                </div>
+                            </div>                         
+
+                            <div class="row-buttons">
+                                <button type="button" class="btn btn-default cancel-button">@L("Cancel")</button>
+                                <button type="submit" class="btn btn-primary save-button">@L("Save")</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
