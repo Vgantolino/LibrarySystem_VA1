@@ -1618,10 +1618,10 @@ namespace LibrarySystem_VA.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("BookAuthor")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int?>("AuthorId")
+                        .HasColumnType("int");
 
-                    b.Property<int>("BookCategoryId")
+                    b.Property<int?>("BookCategoryId")
                         .HasColumnType("int");
 
                     b.Property<string>("BookPublisher")
@@ -1642,8 +1642,8 @@ namespace LibrarySystem_VA.Migrations
                     b.Property<DateTime?>("DeletionTime")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("IsBorrowed")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<bool?>("IsBorrowed")
+                        .HasColumnType("bit");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
@@ -1655,6 +1655,8 @@ namespace LibrarySystem_VA.Migrations
                         .HasColumnType("bigint");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("AuthorId");
 
                     b.HasIndex("BookCategoryId");
 
@@ -2072,11 +2074,15 @@ namespace LibrarySystem_VA.Migrations
 
             modelBuilder.Entity("LibrarySystem_VA.Entities.Book", b =>
                 {
+                    b.HasOne("LibrarySystem_VA.Entities.Author", "Author")
+                        .WithMany()
+                        .HasForeignKey("AuthorId");
+
                     b.HasOne("LibrarySystem_VA.Entities.BookCategory", "BookCategory")
                         .WithMany()
-                        .HasForeignKey("BookCategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("BookCategoryId");
+
+                    b.Navigation("Author");
 
                     b.Navigation("BookCategory");
                 });

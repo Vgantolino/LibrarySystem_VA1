@@ -46,8 +46,14 @@
                                     @*Book Author*@
                                     <div class="row">
                                         <div class="form-group">
-                                            <label for="bookAuthor">Book Author</label>
-                                            <input type="text" class="form-control" id="bookAuthor" name="BookAuthor" value="@Model?.BookAuthor" placeholder="Book Author">
+                                            <label for="BookAuthorList">Book Author List</label>
+                                            @Html.DropDownListFor(
+                                            x => x.AuthorId,
+                                            Model.AuthorList.Select(
+                                            d => new SelectListItem {
+                                            Value = d.Id.ToString(),
+                                            Text = d.Name
+                                            }), "Select Book Authors", new { @class = "form-control" })
                                         </div>
                                     </div>
 

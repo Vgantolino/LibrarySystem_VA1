@@ -5,6 +5,7 @@ using Abp.Collections.Extensions;
 using Abp.Domain.Repositories;
 using Abp.Extensions;
 using LibrarySystem_VA.Authorization.Users;
+using LibrarySystem_VA.Authors.Dto;
 using LibrarySystem_VA.Books.Dto;
 using LibrarySystem_VA.Entities;
 using LibrarySystem_VA.Roles.Dto;
@@ -72,20 +73,15 @@ namespace LibrarySystem_VA.Books
             return new PagedResultDto<BookDto>(query.Count(), query);
         }
 
-        public async Task<ListResultDto<BookDto>> GetRoles()
+        public async Task<PagedResultDto<AuthorDto>> GetAllBooksWithBookAuthor(PagedAuthorResultRequestDto input)
         {
-            var roles = await _repository.GetAllListAsync();
-            return new ListResultDto<BookDto>(ObjectMapper.Map<List<BookDto>>(roles));
+            var query = await _repository.GetAll()
+                .Include(x => x.Author)
+                .Select(x => ObjectMapper.Map<AuthorDto>(x))
+                .ToListAsync();
+
+            return new PagedResultDto<AuthorDto>(query.Count(), query);
         }
 
-        //protected override IQueryable<BookDto> CreateFilteredQuery(PagedBookResultRequestDto input)
-        //{
-
-        //    var query = Repository.GetAllIncluding(x => x.Id)
-        //        .WhereIf(!input.Keyword.IsNullOrWhiteSpace(), x => x.BookTitle.Contains(input.Keyword));
-        //    var map = ObjectMapper.MapTo(query, input);
-
-        //    return 
-        //}
     }
 }

@@ -1,4 +1,6 @@
 ﻿using Abp.Application.Services.Dto;
+using LibrarySystem_VA.Authors;
+using LibrarySystem_VA.Authors.Dto;
 using LibrarySystem_VA.BookCategories;
 using LibrarySystem_VA.BookCategories.Dto;
 using LibrarySystem_VA.Books;
@@ -21,13 +23,13 @@ namespace LibrarySystem_VA.Web.Controllers
 
         private readonly IBookAppService _bookAppService;
         private readonly IBookCategoryAppService _bookCategoryAppService;
+        private readonly IAuthorAppService _authorAppService;
 
-        public BooksController(IBookAppService bookAppService, IBookCategoryAppService bookCategoryAppService)
+        public BooksController(IBookAppService bookAppService, IBookCategoryAppService bookCategoryAppService, IAuthorAppService authorAppService)
         {
             _bookCategoryAppService = bookCategoryAppService;
             _bookAppService = bookAppService;
         }
-
 
         public async Task<IActionResult> Index(string searchBooks)
         {
@@ -38,18 +40,20 @@ namespace LibrarySystem_VA.Web.Controllers
             {
                 model = new BookListViewModel()
                 {
-                    Books = books.Items.Where(b => b.BookTitle.Contains(searchBooks) || 
+                    Books = books.Items.Where(b => b.BookTitle.Contains(searchBooks) ||
                                                    b.BookPublisher.Contains(searchBooks) ||
-                                                   b.BookAuthor.Contains(searchBooks)).ToList()
+                                                   b.BookCategory.Name.Contains(searchBooks)).ToList()
                 };
+
             }
             else
             {
                 model = new BookListViewModel()
                 {
-                    Books = books.Items.ToList()
+                    Books = books.Items.ToList()                    
                 };
-            }
+            }           
+          
             return View(model);
         }       
         
@@ -57,6 +61,7 @@ namespace LibrarySystem_VA.Web.Controllers
         {
             var model = new CreateOrEditBookViewModel();
             var bookCategory = await _bookCategoryAppService.GetAllAsync(new PagedBookCategoryResultRequestDto { MaxResultCount = int.MaxValue });
+            var bookAuthor = await _authorAppService.GetAllAsync(new PagedAuthorResultRequestDto { MaxResultCount = int.MaxValue });
 
             if (id != 0)
             {
@@ -66,16 +71,15 @@ namespace LibrarySystem_VA.Web.Controllers
                     Id = id,
                     BookTitle = books.BookTitle,
                     BookPublisher = books.BookPublisher,
-                    BookAuthor = books.BookAuthor,
-                    BookCategoryId = books.BookCategoryId
+                    BookCategoryId = books.BookCategoryId,
+                    AuthorId = books.AuthorId
                 };
             }
 
             model.BookCategoryList = bookCategory.Items.ToList();
+            model.AuthorList = bookAuthor.Items.ToList();
             return View(model);
         }
-
-
         
     }
 }
