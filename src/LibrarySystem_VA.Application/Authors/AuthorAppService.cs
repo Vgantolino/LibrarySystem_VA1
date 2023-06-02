@@ -3,6 +3,7 @@ using Abp.Application.Services.Dto;
 using Abp.Domain.Repositories;
 using LibrarySystem_VA.Authors.Dto;
 using LibrarySystem_VA.Entities;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,8 +14,10 @@ namespace LibrarySystem_VA.Authors
 {
     public class AuthorAppService : AsyncCrudAppService<Author, AuthorDto, int, PagedAuthorResultRequestDto, CreateAuthorDto, AuthorDto>, IAuthorAppService
     {
+        private readonly IRepository<Author, int> _repository;
         public AuthorAppService(IRepository<Author, int> repository) : base(repository)
         {
+            _repository = repository;
         }
 
         public override Task<AuthorDto> CreateAsync(CreateAuthorDto input)
@@ -46,5 +49,15 @@ namespace LibrarySystem_VA.Authors
         {
             return base.GetEntityByIdAsync(id);
         }
+
+        public async Task<List<AuthorDto>> GetAllAuthors()
+        {
+            var query = await _repository.GetAll()
+                .Select(x => ObjectMapper.Map<AuthorDto>(x))
+                .ToListAsync();
+
+            return query;
+        }
+
     }
 }

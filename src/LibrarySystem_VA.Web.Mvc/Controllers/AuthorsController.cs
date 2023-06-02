@@ -2,6 +2,7 @@
 using LibrarySystem_VA.Authors;
 using LibrarySystem_VA.Authors.Dto;
 using LibrarySystem_VA.Controllers;
+using LibrarySystem_VA.Departments.Dto;
 using LibrarySystem_VA.Web.Models.Authors;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
@@ -21,22 +22,25 @@ namespace LibrarySystem_VA.Web.Controllers
         public async Task<IActionResult> Index(string searchAuthors)
         {
             var authors = await _authorAppService.GetAllAsync(new PagedAuthorResultRequestDto { MaxResultCount = int.MaxValue });
-            var model = new AuthorListViewModel();
+            var model = new AuthorListViewModel()
+            {
+                Authors = authors.Items.ToList()
+            };
 
-            if (!string.IsNullOrEmpty(searchAuthors))
-            {
-                model = new AuthorListViewModel()
-                {
-                    Authors = authors.Items.Where(a => a.Name.Contains(searchAuthors)).ToList()
-                };
-            }
-            else
-            {
-                model = new AuthorListViewModel()
-                {
-                    Authors = authors.Items.ToList()
-                };
-            }
+            //if (!string.IsNullOrEmpty(searchAuthors))
+            //{
+            //    model = new AuthorListViewModel()
+            //    {
+            //        Authors = authors.Items.Where(a => a.Name.Contains(searchAuthors)).ToList()
+            //    };
+            //}
+            //else
+            //{
+            //    model = new AuthorListViewModel()
+            //    {
+            //        Authors = authors.Items.ToList()
+            //    };
+            //}
 
             return View(model);
         }
@@ -53,10 +57,14 @@ namespace LibrarySystem_VA.Web.Controllers
                     Id = id,
                     Name = author.Name
                 };
+
+                return View(model);
             }
 
-            return View(model);
-        }
-
+            else
+            {
+                return View();
+            }
+        }       
     }
 }

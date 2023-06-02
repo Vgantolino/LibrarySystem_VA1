@@ -67,21 +67,22 @@ namespace LibrarySystem_VA.Books
         {
             var query = await _repository.GetAll()
                 .Include(x => x.BookCategory)
+                .Include(x => x.Author)
                 .Select(x => ObjectMapper.Map<BookDto>(x))
                 .ToListAsync();
 
             return new PagedResultDto<BookDto>(query.Count(), query);
         }
 
-        public async Task<PagedResultDto<AuthorDto>> GetAllBooksWithBookAuthor(PagedAuthorResultRequestDto input)
-        {
-            var query = await _repository.GetAll()
-                .Include(x => x.Author)
-                .Select(x => ObjectMapper.Map<AuthorDto>(x))
-                .ToListAsync();
+        //public async Task<PagedResultDto<AuthorDto>> GetAllBooksWithBookAuthor(PagedAuthorResultRequestDto input)
+        //{
+        //    var query = await _repository.GetAll()
+        //        .Include(x => x.Author)
+        //        .Select(x => ObjectMapper.Map<AuthorDto>(x))
+        //        .ToListAsync();
 
-            return new PagedResultDto<AuthorDto>(query.Count(), query);
-        }
-
+        //    return new PagedResultDto<AuthorDto>(query.Count(), query);
+        //}
+        
     }
 }
