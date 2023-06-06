@@ -15,7 +15,14 @@
                 <h1>@L("Departments")</h1>
             </div>
             <div class="col-sm-6">
-                <a class="btn bg-blue float-sm-right" asp-controller="Departments" asp-action="CreateOrEdit">
+                <a style="border-radius:40px;
+                          border-color:#0079FF;
+                          background:#0079FF;
+                          color:#fff;
+                          font-size:16px;
+                          font-weight:500;
+                          text-transform:uppercase"
+                   class="btn float-sm-right" asp-controller="Departments" asp-action="CreateOrEdit">
                     <i class="fa fa-plus-square"></i>
                     @L("Create")
                 </a>
@@ -23,30 +30,44 @@
         </div>
     </div>
 </section>
+
 <section class="content">
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
                 <div class="card">
-                    @*<div class="card-header">
+                   
+                    @*Search*@
+                    <div class="card-header">
                         <div class="row">
                             <div class="col-md-6">
-                                <!--Use for bulk actions-->
-                            </div>
-                            <div class="col-md-6">
-                                @await Html.PartialAsync("~/Views/Users/Index.AdvancedSearch.cshtml")
+                                <div class="abp-advanced-search">
+                                    <form name="searchDeptForm" class="form-horizontal" asp-controller="Departments" asp-action="Index" method="get">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <button type="submit" class="btn bg-blue btn-search search-button">
+                                                    <span class="fas fa-search" aria-hidden="true"></span>
+                                                </button>
+                                            </div>
+                                            <input class="form-control txt-search" type="text" name="Keyword" placeholder="Search" />
+                                        </div>
+                                    </form>
+                                </div>
                             </div>
                         </div>
-                    </div>*@
+                    </div>
+
+                    @*Table*@
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table id="DepartmentTable" class="table table-striped table-bordered">
-                                <thead>
-                                    <tr>                                 
-                                        <th>@L("DeptID")</th>
-                                        <th>@L("DeptName")</th>
-                                        <th style="width: 180px">@L("Actions")</th>
-                                    </tr>
+                            <table id="DepartmentTable" class="table thead-dark table-hover table-bordered">
+                                <thead style="background:#9BA4B5;
+                                              color:#212A3E">
+                                        <tr>                                 
+                                            <th style="width:100px">@L("DeptID")</th>
+                                            <th style="width:170px">@L("DeptName")</th>
+                                            <th style="width: 100px">@L("Actions")</th>
+                                        </tr>
                                 </thead>
                                 <tbody>
                                     @foreach (var department in Model.Departments)
@@ -55,11 +76,30 @@
                                             <td>@department?.Id</td>
                                             <td>@department?.Name</td>
                                             <td>
-                                                <button type="button" class="btn btn-sm bg-secondary edit-dept" data-dept-id="@department?.Id">
+                                                <button style="border-color:#6C9BCF;
+                                                               background:#6C9BCF;
+                                                               color:#fff;
+                                                               font-size:14px;
+                                                               font-weight:500;
+                                                               text-transform: uppercase"
+                                                        type="button" 
+                                                        class="btn btn-sm edit-dept" 
+                                                        data-dept-id="@department?.Id">
+
                                                     <i class="fas fa-pencil-alt"></i> Edit
                                                 </button>
 
-                                                <button type="button" class="btn btn-sm bg-danger delete-dept" data-dept-id="@department?.Id" data-dept-name="@department.Name">
+                                                <button style="border-color:#DD5353;
+                                                               background:#DD5353;
+                                                               color:#fff;
+                                                               font-size:14px;
+                                                               font-weight:500;
+                                                               text-transform: uppercase"
+                                                        type="button"
+                                                        class="btn btn-sm delete-dept"
+                                                        data-dept-id="@department?.Id"
+                                                        data-dept-name="@department.Name">
+
                                                     <i class="fas fa-trash"></i> Delete
                                                 </button>
                                             </td>
@@ -69,6 +109,7 @@
                             </table>
                         </div>
                     </div>
+
                 </div>
             </div>
         </div>

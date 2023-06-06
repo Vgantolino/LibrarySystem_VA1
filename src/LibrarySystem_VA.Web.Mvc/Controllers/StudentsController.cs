@@ -24,15 +24,28 @@ namespace LibrarySystem_VA.Web.Controllers
             _departmentAppService = departmentAppService;
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string searchStudent)
         {
             var students = await _studentAppService.GetAllDepartment(new PagedStudentResultRequestDto { MaxResultCount = int.MaxValue }); //get all the students in DB from appservice
+            var model = new StudentListViewModel(); //ipapasa sa index (controller > html) model >> controller
 
-            //ipapasa sa index (controller > html) model >> controller
-            var model = new StudentListViewModel()
+            if (!string.IsNullOrEmpty(searchStudent))
             {
-                Students = students.Items.ToList()
-            };
+                model = new StudentListViewModel()
+                {
+                    Students = students.Items.Where(s => s.StudentName.Contains(searchStudent) ||
+                                                     s.StudentContactNumber.Contains(searchStudent) ||
+                                                     s.StudentEmail.Contains(searchStudent) ||
+                                                     s.Department.Name.Contains(searchStudent)).ToList()
+                };                
+            }
+            else
+            {
+                model = new StudentListViewModel()
+                {
+                    Students = students.Items.ToList()
+                };
+            }
 
             return View(model);
         }

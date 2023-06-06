@@ -1,0 +1,103 @@
+﻿@*@section scripts
+{
+    <environment names="Development">
+        <script src="~/view-resources/Views/__/__.js" asp-append-version="true"></script>
+    </environment>
+}*@
+
+<section class="content">
+    <div style="padding-top:20px" class="container">
+
+        <div class="row">
+            <div class="col-8">
+                <div class="card card-5">
+                    <div class="card-heading">
+                        <h2 style="color:#555; text-align: center; font-size:30px; font-weight:700; text-transform: uppercase" 
+                            class="title">Borrower Form</h2>
+                    </div>
+
+                    <div style="background-color:white" class="card-body">
+                        <form name="BorrowerForm" role="form" class="form-horizontal">
+                            <input type="hidden" name="Id" value="@Model?.Id" />
+
+                            @*BODY*@
+                            <div class="row">                                
+                                 <div class="form-group">
+                                    <label for="BorrowDate">Borrow Date</label>
+                                    <input style="background:#F8F6F4; border-radius:5px; border-color:#555; font-size:16px; color:#555"
+                                           type="date"
+                                           id="BorrowDate"
+                                           name="BorrowDate"
+                                           placeholder="Pick a Date">
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="form-group">
+                                    <label for="ExpectedReturnDate">Expected Return Date</label>
+                                    <input style="background:#F8F6F4; border-radius:5px; border-color:#555; font-size:16px; color:#555"
+                                           type="date"
+                                           id="BorrowDate"
+                                           name="BorrowDate"
+                                           placeholder="Pick a Date">
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="form-group">
+                                    <label for="ReturnDate">Return Date</label>
+                                    <input style="background:#F8F6F4; border-radius:5px; border-color:#555; font-size:16px; color:#555"
+                                           type="date"
+                                           id="BorrowDate"
+                                           name="BorrowDate"
+                                           placeholder="Pick a Date">
+                                </div>
+                            </div>
+
+                           @*<div class="row">
+                                <div class="form-group">
+                                    <label for="BookAuthorList">Book Author List</label>
+                                    @Html.DropDownListFor(
+                                    x => x.AuthorId,
+                                    Model.AuthorList.Select(
+                                    d => new SelectListItem {
+                                    Value = d.Id.ToString(),
+                                    Text = d.Name
+                                    }), "Select Book Authors", new { @class = "form-control" })
+                                </div>
+                            </div>*@
+
+                            @*CANCEl/SAVE BUTTONS*@
+                            <div class="row-buttons">
+                                <button style="border-radius:40px;
+                                                   border-color:#526D82;
+                                                   background:#526D82;
+                                                   color:#fff;
+                                                   font-size:16px;
+                                                   font-weight:500;
+                                                   text-transform: uppercase"
+                                        type="button"
+                                        class="btn btn-round cancel-button">
+                                    @L("Cancel")
+                                </button>
+
+                                <button style="border-radius:40px;
+                                                   border-color:#8bbabb;
+                                                   background:#8bbabb;
+                                                   color:#fff;
+                                                   font-size:16px;
+                                                   font-weight:500;
+                                                   text-transform: uppercase"
+                                        type="submit" class="btn rounded-pill save-button">
+                                    @L("Save")
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>

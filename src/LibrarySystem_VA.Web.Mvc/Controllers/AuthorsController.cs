@@ -21,26 +21,11 @@ namespace LibrarySystem_VA.Web.Controllers
 
         public async Task<IActionResult> Index(string searchAuthors)
         {
-            var authors = await _authorAppService.GetAllAsync(new PagedAuthorResultRequestDto { MaxResultCount = int.MaxValue });
+            var authors = await _authorAppService.GetAllAuthors();
             var model = new AuthorListViewModel()
             {
-                Authors = authors.Items.ToList()
+                Authors = authors
             };
-
-            //if (!string.IsNullOrEmpty(searchAuthors))
-            //{
-            //    model = new AuthorListViewModel()
-            //    {
-            //        Authors = authors.Items.Where(a => a.Name.Contains(searchAuthors)).ToList()
-            //    };
-            //}
-            //else
-            //{
-            //    model = new AuthorListViewModel()
-            //    {
-            //        Authors = authors.Items.ToList()
-            //    };
-            //}
 
             return View(model);
         }

@@ -1,7 +1,6 @@
 ﻿@using LibrarySystem_VA.Web.Models.Authors;
 @model AuthorListViewModel
 
-
 @section scripts
 {
     <environment names="Development">
@@ -35,15 +34,14 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="abp-advanced-search">
-                                    <form name="searchAuthorsForm" class="form-horizontal">
-                                        @*asp-controller="Authors" asp-action="Index" method="get"*@
+                                    <form id="searchAuthorForm" class="form-horizontal">
                                         <div class="input-group">
                                             <div class="input-group-prepend">
                                                 <button type="submit" class="btn bg-blue btn-search search-button">
                                                     <span class="fas fa-search" aria-hidden="true"></span>
                                                 </button>
                                             </div>
-                                            <input class="form-control" type="text" name="searchAuthors" placeholder="Search" />
+                                            <input type="text" name="Keyword" class="form-control txt-search" />
                                         </div>
                                     </form>
                                 </div>
@@ -62,24 +60,7 @@
                                         <th style="width: 150px">@L("Actions")</th>
                                     </tr>
                                 </thead>
-                                    <tbody>
-                                        @*@foreach (var Author in Model.Authors)
-                                        {
-                                            <tr>
-                                                <td>@Author?.Id</td>
-                                                <td>@Author?.Name</td>
-                                                <td>
-                                                    <button type="button" class="btn btn-sm bg-secondary edit-author" data-author-id="@Author?.Id">
-                                                        <i class="fas fa-pencil-alt"></i> Edit
-                                                    </button>
-
-                                                <button type="button" class="btn btn-sm bg-danger delete-author" data-author-id="@Author?.Id" data-author-name="@Author.Name">
-                                                        <i class="fas fa-trash"></i> Delete
-                                                    </button>
-                                                </td>
-                                            </tr>
-                                        }*@
-                                    <tbody>
+                                    <tbody><tbody>
                             </table>
                         </div>
                     </div>

@@ -12,5 +12,6 @@
         public const string BookCategories = "BookCategory";
         public const string Books = "Books";
         public const string Authors = "Authors";
+        public const string Borrowers = "Borrowers";
     }
 }

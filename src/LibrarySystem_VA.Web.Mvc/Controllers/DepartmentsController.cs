@@ -19,14 +19,26 @@ namespace LibrarySystem_VA.Web.Controllers
             _departmentAppService = departmentAppService;
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string SearchDept)
         {
 
             var departments = await _departmentAppService.GetAllAsync(new PagedDepartmentResultRequestDto { MaxResultCount = int.MaxValue });
-            var model = new DepartmentListViewModel()
+            var model = new DepartmentListViewModel();
+
+            if (!string.IsNullOrEmpty(SearchDept))
             {
-                Departments = departments.Items.ToList()
-            };
+                model = new DepartmentListViewModel()
+                {
+                    Departments = departments.Items.Where(d => d.Name.Contains(SearchDept)).ToList()
+                };
+            }
+            else
+            {
+                model = new DepartmentListViewModel()
+                {
+                    Departments = departments.Items.ToList()
+                };
+            }
 
             return View(model);
         }

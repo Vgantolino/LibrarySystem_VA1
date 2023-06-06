@@ -9,29 +9,77 @@
 }
 
 <section class="content">
-    <div class="container-fluid">
+    <div style ="padding-top:20px" class="container">
+        
         <div class="row">
-            <div class="col-12">
-                <div class="card">
-                    <div class="card-body">
-                        <form name="DepartmentForm" role="form" class="form-horizontal">
-                            <input type="hidden" name="Id" value="@Model?.Id" />
-                            
-                            <div class="row">
-                                <div class="form-group">
-                                    <label for="DepartmentName">Name</label>
-                                    <input type="text" class="form-control" name="Name" value="@Model?.Name" placeholder="Department Name">
-                                </div>
-                            </div>                         
+            <div class="col-8">
+                <div class="card card-5">
+                    <div style="background-color:#1a1a1a;
+                                padding: 10px 0;
+                                border-top-left-radius:10px;
+                                border-top-right-radius:10px"
+                         class="card-heading">
+                            <h2 style="color:#fff; 
+                                       text-align: center;
+                                       font-size:30px;
+                                       font-weight:700;
+                                       text-transform: uppercase" 
+                                class="title">Department Form</h2>
+                    </div>
 
-                            <div class="row-buttons">
-                                <button type="button" class="btn btn-default cancel-button">@L("Cancel")</button>
-                                <button type="submit" class="btn btn-primary save-button">@L("Save")</button>
-                            </div>
-                        </form>
+                    <div style="background-color:white"
+                         class="card-body">
+
+                            <form name="DepartmentForm" role="form" class="form-horizontal">
+                                <input type="hidden" name="Id" value="@Model?.Id" />
+                            
+                                <div class="form-row"
+                                     style="display:flex;
+                                     flex-wrap:wrap;
+                                     align-items:center;
+                                     margin-bottom:10px">
+
+                                    <div class="form-group">
+                                        <label for="DepartmentName">Name</label>
+                                    <input style="background:#F8F6F4;
+                                                  border-radius:5px;
+                                                  border-color:#555;
+                                                  font-size:16px;
+                                                  color:#555"
+                                               aria-label="Small"
+                                               type="text"
+                                               class="form-control"
+                                               name="Name"
+                                               value="@Model?.Name"
+                                               placeholder="Department Name">
+                                    </div>
+                                </div>                         
+
+                                <div class="row-buttons">
+                                    <button style="border-radius:40px;
+                                                   border-color:#526D82;
+                                                   background:#526D82;
+                                                   color:#fff;
+                                                   font-size:16px;
+                                                   font-weight:500;
+                                                   text-transform: uppercase"
+                                            type="button"
+                                            class="btn btn-round cancel-button">@L("Cancel")</button>
+
+                                    <button style="border-radius:40px;
+                                                   border-color:#8bbabb;
+                                                   background:#8bbabb;
+                                                   color:#fff;
+                                                   font-size:16px;
+                                                   font-weight:500;
+                                                   text-transform: uppercase"
+                                            type="submit" class="btn rounded-pill save-button">@L("Save")</button>
+                                </div>
+                            </form>
                     </div>
                 </div>
             </div>
         </div>
+
     </div>
 </section>

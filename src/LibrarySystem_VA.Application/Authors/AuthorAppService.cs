@@ -1,6 +1,8 @@
 ﻿using Abp.Application.Services;
 using Abp.Application.Services.Dto;
 using Abp.Domain.Repositories;
+using Abp.Extensions;
+using Abp.Linq.Extensions;
 using LibrarySystem_VA.Authors.Dto;
 using LibrarySystem_VA.Entities;
 using Microsoft.EntityFrameworkCore;
@@ -58,6 +60,6 @@ namespace LibrarySystem_VA.Authors
 
             return query;
         }
-
+        
     }
 }

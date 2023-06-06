@@ -33,5 +33,8 @@ namespace LibrarySystem_VA.EntityFrameworkCore
         //Authors
         public virtual DbSet<Author> Authors { get; set; }
 
+        //Borrowers
+        public virtual DbSet<Borrower> Borrowers { get; set; }
+
     }
 }

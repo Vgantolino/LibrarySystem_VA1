@@ -151,6 +151,12 @@
 	<text name="AuthorID">Author ID</text>
 	<text name="AuthorName">Author Name</text>
 	  
+	//Borrowers
+	<text name="Borrowers">Borrowers</text>
+	<text name="BorrowDate">Borrow Date</text>
+	<text name="ExpectedReturnDate">Expected Return Date</text>
+	<text name="ReturnDate">Return Date</text>
+	  
 	  
 	</texts>
 </localizationDictionary>

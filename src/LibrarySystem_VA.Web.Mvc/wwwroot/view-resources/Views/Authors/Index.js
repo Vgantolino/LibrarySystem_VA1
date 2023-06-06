@@ -2,7 +2,7 @@
 
     var _authorService = abp.services.app.author,
         l = abp.localization.getSource('LibrarySystem_VA'),
-        _$form = $('form[name=searchAuthorsForm]');
+        _$form = $('form[name=searchAuthorForm]');
         _$table = $('#AuthorsTable');
 
     //Edit
@@ -31,11 +31,6 @@
         );
     });
 
-    //Search
-    _$form.find('.search-button').on('click', (e) => {
-        window.location.href = "/Authors/Index";
-    })
-
     //Index Page
     var _$authorsTable = _$table.DataTable({
         paging: true,
@@ -43,7 +38,7 @@
         listAction: {
             ajaxFunction: _authorService.getAll,
             inputFilter: function () {
-                return $('#searchAuthorsForm').serializeFormToObject(true);
+                return $('#searchAuthorForm').serializeFormToObject(true);
             }
         },
         buttons: [
@@ -89,7 +84,19 @@
         ]
     });
 
+    $('.search-button').on('click', (e) => {
+        _$authorsTable.ajax.reload();
+    });
 
+    $('.txt-search').on('keypress', (e) => {
+        if (e.which == 13) {
+            _$authorsTable.ajax.reload();
+            return false;
+        }
+    });
 
-    
+    //$('#SearchTxtField').keyup(function () {
+    //    _$authorsTable.search($(this).val()).draw();
+    //})
+
 })(jQuery);

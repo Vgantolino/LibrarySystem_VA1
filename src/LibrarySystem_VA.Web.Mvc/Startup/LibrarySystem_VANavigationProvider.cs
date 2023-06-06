@@ -63,6 +63,14 @@ namespace LibrarySystem_VA.Web.Startup
                     )
                 ).AddItem(
                     new MenuItemDefinition(
+                        PageNames.Borrowers,
+                        L("Borrowers"),
+                        url: "Borrowers",
+                        icon: "fas fa-exchange-alt",
+                        requiresAuthentication: true
+                    )
+                ).AddItem(
+                    new MenuItemDefinition(
                         PageNames.Home,
                         L("HomePage"),
                         url: "",
