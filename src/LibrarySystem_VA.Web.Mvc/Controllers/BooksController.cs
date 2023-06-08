@@ -29,11 +29,12 @@ namespace LibrarySystem_VA.Web.Controllers
         {
             _bookCategoryAppService = bookCategoryAppService;
             _bookAppService = bookAppService;
+            _authorAppService = authorAppService;
         }
 
         public async Task<IActionResult> Index(string searchBooks)
         {
-            var books = await _bookAppService.GetAllBooksWithBookCategory(new PagedBookResultRequestDto { MaxResultCount = int.MaxValue });
+            var books = await _bookAppService.GetAllBooksWithBookCategoryAndAuthor(new PagedBookResultRequestDto { MaxResultCount = int.MaxValue });
             var model = new BookListViewModel();
 
             if (!string.IsNullOrEmpty(searchBooks))

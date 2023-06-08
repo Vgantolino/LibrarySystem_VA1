@@ -15,7 +15,7 @@
                 <h1>@L("Borrowers")</h1>
             </div>
             <div class="col-sm-6">
-                <a class="btn bg-blue float-sm-right" asp-controller="Borrowers" asp-action="CreateOrEdit">
+                <a class="btn bg-blue float-sm-right" asp-controller="Borrowers" asp-action="Create">
                     <i class="fa fa-plus-square"></i>
                     @L("Create")
                 </a>
@@ -30,11 +30,11 @@
             <div class="col-12">
                 <div class="card">
                     
-                    @*<div class="card-header">
+                    <div class="card-header">
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="abp-advanced-search">
-                                    <form name="searchDeptForm" class="form-horizontal" asp-controller="Departments" asp-action="Index" method="get">
+                                    <form name="searchBorrowerForm" class="form-horizontal" asp-controller="Borrowers" asp-action="Index" method="get">
                                         <div class="input-group">
                                             <div class="input-group-prepend">
                                                 <button type="submit" class="btn bg-blue btn-search search-button">
@@ -47,7 +47,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>*@
+                    </div>
 
                     @*Table*@
                     <div class="card-body">
@@ -67,11 +67,24 @@
                                     @foreach (var borrower in Model.Borrowers)
                                     {
                                         <tr>
-                                            <td>@borrower?.BorrowDate</td>
-                                            <td>@borrower?.ExpectedReturnDate</td>
-                                            <td>@borrower?.ReturnDate</td>
+                                            <td>@borrower?.BorrowDate.ToString("MM/dd/yyyy")</td>
+                                            <td>@borrower?.ExpectedReturnDate.ToString("MM/dd/yyyy")</td>
+                                            <td>@borrower?.ReturnDate.ToString("MM/dd/yyyy")</td>
                                             <td>@borrower.Book?.BookTitle</td>
                                             <td>@borrower.Student?.StudentName</td>
+                                            <td>
+                                                <button style="border-color:#6C9BCF; background:#6C9BCF; color:#fff; font-size:14px;
+                                                               font-weight:500; text-transform: uppercase"
+                                                        type="button" class="btn btn-sm edit-dept" data-dept-id="@borrower?.Id">
+                                                <i class="fas fa-pencil-alt"></i> Edit
+                                                </button>
+
+                                                <button style="border-color:#DD5353; background:#DD5353; color:#fff; font-size:14px;
+                                                               font-weight:500; text-transform: uppercase"
+                                                        type="button" class="btn btn-sm delete-dept" data-dept-id="@borrower?.Id" data-dept-name="@borrower.Student?.StudentName">
+                                                <i class="fas fa-trash"></i> Delete
+                                                </button>
+                                            </td>
                                         </tr>
                                     }
                                 </tbody>

@@ -63,7 +63,7 @@ namespace LibrarySystem_VA.Books
             return base.GetEntityByIdAsync(id);
         }
 
-        public async Task<PagedResultDto<BookDto>> GetAllBooksWithBookCategory(PagedBookResultRequestDto input)
+        public async Task<PagedResultDto<BookDto>> GetAllBooksWithBookCategoryAndAuthor(PagedBookResultRequestDto input)
         {
             var query = await _repository.GetAll()
                 .Include(x => x.BookCategory)
@@ -73,16 +73,6 @@ namespace LibrarySystem_VA.Books
 
             return new PagedResultDto<BookDto>(query.Count(), query);
         }
-
-        //public async Task<PagedResultDto<AuthorDto>> GetAllBooksWithBookAuthor(PagedAuthorResultRequestDto input)
-        //{
-        //    var query = await _repository.GetAll()
-        //        .Include(x => x.Author)
-        //        .Select(x => ObjectMapper.Map<AuthorDto>(x))
-        //        .ToListAsync();
-
-        //    return new PagedResultDto<AuthorDto>(query.Count(), query);
-        //}
         
     }
 }

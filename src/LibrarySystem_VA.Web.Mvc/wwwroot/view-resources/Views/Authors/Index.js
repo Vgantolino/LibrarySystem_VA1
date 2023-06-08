@@ -95,8 +95,4 @@
         }
     });
 
-    //$('#SearchTxtField').keyup(function () {
-    //    _$authorsTable.search($(this).val()).draw();
-    //})
-
 })(jQuery);

@@ -123,6 +123,8 @@
 	<text name="DeptName">Department Name</text>
 	<text name="Departments">Department</text>
 	<text name="CreateDeptName">Name</text>
+	<text name="NewDepartmentForm">Department Entry Form</text>
+	
 	  
 	//Student
 	<text name="Students">Students</text>
@@ -130,12 +132,12 @@
 	<text name="StudentName">Student Name</text>
 	<text name="StudentContactNumber">Student Contact Number</text>
 	<text name="StudentEmail">Student Email</text>
-	<text name="AddNewStudent">Add New Student</text>
+	<text name="NewStudentForm">Student Entry Form</text>
 
 	//BookCategory
 	<text name="BookCategories">Book Category</text>
 	<text name="BookCategoryName">Book Category Name</text>
-	<text name="AddNewBookCategory">Add New Book Category</text>
+	<text name="AddNewBookCategory">Book Category Entry Form</text>
 	<text name="BookCategoryId">Book Category Id</text>
 	  
 	//Books
@@ -144,18 +146,20 @@
 	<text name="BookPublisher">Book Publisher</text>
 	<text name="BookAuthor">Book Author</text>
 	<text name="IsBorrowed">Is Borrowed</text>
-	<text name="AddNewBooks">Add New Book</text>
+	<text name="AddNewBooks">Book Entry Form</text>
 	
 	//Authors
 	<text name="Authors">Authors</text>
 	<text name="AuthorID">Author ID</text>
 	<text name="AuthorName">Author Name</text>
+	<text name="NewAuthorForm">Author Entry Form</text>
 	  
 	//Borrowers
 	<text name="Borrowers">Borrowers</text>
 	<text name="BorrowDate">Borrow Date</text>
 	<text name="ExpectedReturnDate">Expected Return Date</text>
 	<text name="ReturnDate">Return Date</text>
+	<text name="NewBorrowerForm">Borrower Entry Form</text>
 	  
 	  
 	</texts>

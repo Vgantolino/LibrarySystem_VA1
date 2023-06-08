@@ -27,33 +27,31 @@
                         <form name="BookCategoryForm" role="form" class="form-horizontal">
                             <input type="hidden" name="Id" value="@Model?.Id" />
 
-
-                            <div class="row">
-                                <div class="form-group">
-                                    @*Book Category Name*@
+                            @*Book Category Name*@
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
                                     <label for="bookCategoryName">Book Category Name</label>
-                                    <input type="text" class="form-control" name="Name" value="@Model?.Name" placeholder="Book Category Name">
+                                    <input class="form-control" type="text" name="Name" value="@Model?.Name" placeholder="Book Category Name">
                                 </div>
                             </div>
                             
                             @*Department List*@
-                            <div class="row">
-                                <div class="form-group">
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
                                     <label for="DepartmentList">Department List</label>
-                                    @Html.DropDownListFor(
-                                    x => x.DepartmentId,
-                                    Model.DepartmentList.Select(
-                                    d => new SelectListItem {
-                                    Value = d.Id.ToString(),
-                                    Text = d.Name
-                                    }), "Select Department", new { @class = "form-control" })
+                                    @Html.DropDownListFor(x => x.DepartmentId,
+                                        Model.DepartmentList.Select(d => new SelectListItem {
+                                                                    Value = d.Id.ToString(),
+                                                                    Text = d.Name}), "Select Department", new { @class = "form-control" })
                                 </div>
                             </div>
                             
                             @*Save/Cancel Buttons*@
-                            <div class="row-buttons">
-                                <button type="button" class="btn btn-default cancel-button">@L("Cancel")</button>
-                                <button type="submit" class="btn btn-primary save-button">@L("Save")</button>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <button type="button" class="btn btn-default cancel-button">@L("Cancel")</button>
+                                    <button type="submit" class="btn btn-primary save-button">@L("Save")</button>
+                                </div>
                             </div>
                         </form>
                     </div>

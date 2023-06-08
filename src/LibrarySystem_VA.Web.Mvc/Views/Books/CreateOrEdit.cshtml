@@ -28,53 +28,49 @@
                             <input type="hidden" name="Id" value="@Model?.Id"/>
                             
                                     @*Book Title*@
-                                    <div class="row">
-                                        <div class="form-group">                                    
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">                                    
                                             <label for="bookTitle">Book Title</label>
                                             <input type="text" class="form-control" id="bookTitle" name="BookTitle" value="@Model?.BookTitle" placeholder="Book Title">
                                         </div>
                                     </div>
 
                                     @*Book Publisher*@
-                                    <div class="row">
-                                        <div class="form-group">
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
                                             <label for="bookPublisher">Book Publisher</label>
                                             <input type="text" class="form-control" id="bookPublisher" name="BookPublisher" value="@Model?.BookPublisher" placeholder="Book Publisher">
                                         </div>
                                     </div>
 
                                     @*Book Author*@
-                                    <div class="row">
-                                        <div class="form-group">
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
                                             <label for="BookAuthorList">Book Author List</label>
-                                            @Html.DropDownListFor(
-                                            x => x.AuthorId,
-                                            Model.AuthorList.Select(
-                                            d => new SelectListItem {
-                                            Value = d.Id.ToString(),
-                                            Text = d.Name
-                                            }), "Select Book Authors", new { @class = "form-control" })
+                                            @Html.DropDownListFor(x => x.AuthorId,
+                                                Model.AuthorList.Select(d => new SelectListItem {
+                                                                        Value = d.Id.ToString(),
+                                                                        Text = d.Name}), "Select Book Authors", new { @class = "form-control"})
                                         </div>
                                     </div>
 
                                     @*Book Category List*@
-                                    <div class="row">
-                                        <div class="form-group">
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
                                             <label for="BookCategoryList">Book Category List</label>
-                                            @Html.DropDownListFor(
-                                            x => x.BookCategoryId,
-                                            Model.BookCategoryList.Select(
-                                            d => new SelectListItem {
-                                            Value = d.Id.ToString(),
-                                            Text = d.Name
-                                            }), "Select Book Category", new { @class = "form-control" })
+                                            @Html.DropDownListFor(x => x.BookCategoryId,
+                                                Model.BookCategoryList.Select(d => new SelectListItem {
+                                                                              Value = d.Id.ToString(),
+                                                                              Text = d.Name}), "Select Book Category", new { @class = "form-control" })
                                         </div>
                                     </div>
 
                             @*Save/Cancel Buttons*@
-                            <div class="row-buttons">
-                                <button type="button" class="btn btn-default cancel-button">@L("Cancel")</button>
-                                <button type="submit" class="btn btn-primary save-button">@L("Save")</button>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <button type="button" class="btn btn-default cancel-button">@L("Cancel")</button>
+                                    <button type="submit" class="btn btn-primary save-button">@L("Save")</button>
+                                </div>
                             </div>
                         </form>
                     </div>

@@ -16,12 +16,12 @@ namespace LibrarySystem_VA.Borrowers.Dto
 
     public class CreateBorrowerDto : EntityDto<int>
     {
-        public string BookTitle { get; set; }
-        public string BookPublisher { get; set; }
-        public bool? IsBorrowed { get; set; }
-        public int? BookCategoryId { get; set; }
-        public BookCategoryDto BookCategory { get; set; }
-        public int? AuthorId { get; set; }
-        public AuthorDto Author { get; set; }
+        public DateTime BorrowDate { get; set; }
+        public DateTime ExpectedReturnDate { get; set; }
+        public DateTime ReturnDate { get; set; }
+        public int? BookId { get; set; }
+        public Book Book { get; set; }
+        public int? StudentId { get; set; }
+        public Student Student { get; set; }
     }
 }

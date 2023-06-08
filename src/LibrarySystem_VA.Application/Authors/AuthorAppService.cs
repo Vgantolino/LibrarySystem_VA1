@@ -60,6 +60,11 @@ namespace LibrarySystem_VA.Authors
 
             return query;
         }
-        
+
+        protected override IQueryable<Author> CreateFilteredQuery(PagedAuthorResultRequestDto input)
+        {
+            return Repository.GetAll()
+                .WhereIf(!input.Keyword.IsNullOrWhiteSpace(), x => x.Name.Contains(input.Keyword));
+        }
     }
 }
