@@ -160,6 +160,7 @@
 	<text name="ExpectedReturnDate">Expected Return Date</text>
 	<text name="ReturnDate">Return Date</text>
 	<text name="NewBorrowerForm">Borrower Entry Form</text>
+	<text name="EditBorrowerForm">Update Borrower Entry Form</text>
 	  
 	  
 	</texts>

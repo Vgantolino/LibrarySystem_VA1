@@ -65,6 +65,13 @@ namespace LibrarySystem_VA.Students
             return new PagedResultDto<StudentDto>(query.Count(), query);
         }
 
+        public async Task<List<StudentDto>> GetAllStudent()
+        {
+            var query = await _studentRepository.GetAll()
+                .Select(x => ObjectMapper.Map<StudentDto>(x))
+                .ToListAsync();
 
+            return query;
+        }
     }
 }

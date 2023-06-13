@@ -1,0 +1,92 @@
+﻿@using LibrarySystem_VA.Web.Models.Borrowers;
+@model CreateOrEditBorrowerViewModel
+
+@section scripts
+{
+    <environment names="Development">
+        <script src="~/view-resources/Views/Borrowers/CreateOrEdit.js" asp-append-version="true"></script>
+    </environment>
+}
+
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-6">
+                <h1>@L("NewBorrowerForm")</h1>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-8">
+                <div class="card">
+                    <div class="card-body">
+                        <form name="BorrowerForm" role="form" class="form-center">
+                            <input type="hidden" name="Id" value="@Model?.Id" />
+
+                            @*Borrow Date*@
+                            <div class="form-row">
+                                <div class="form-group col-md-4">
+                                    <label for="BorrowDate">Borrow Date</label>
+                                    <input class="form-control" type="date" name="BorrowDate" value="@Model?.BorrowDate" placeholder="Borrow Date">
+                                </div>
+                            </div>
+
+                            @*Expected Return Date*@
+                            <div class="form-row">
+                                <div class="form-group col-md-4">
+                                    <label for="ExpectedReturnDate">Expected Return Date</label>
+                                    <input class="form-control" type="date" name="ExpectedReturnDate" value="@Model?.ExpectedReturnDate" placeholder="Expected Return Date">
+                                </div>
+                            </div>
+
+                            @*Return Date*@
+                            @if (Model.Id != 0)
+                            {
+                                <div class="form-row">
+                                    <div class="form-group col-md-4">
+                                        <label for="ReturnDate">Return Date</label>
+                                        <input class="form-control" type="date" name="ReturnDate" value="@Model?.ReturnDate" placeholder="Return Date">
+                                    </div>
+                                </div>
+                            }                            
+
+                            @*Book Title*@
+                            <div class="form-row">
+                                <div class="form-group col-md-4">
+                                    <label for="BookList">Book List</label>
+                                    @Html.DropDownListFor(x => x.BookId,
+                                        Model.BookList.Select(d => new SelectListItem {
+                                                      Value = d.Id.ToString(),
+                                                       Text = d.BookTitle}), "Select Books", new { @class = "form-control" })
+                                </div>
+                            </div>
+
+                            @*Student Name*@
+                            <div class="form-row">
+                                <div class="form-group col-md-4">
+                                    <label for="StudentList">Student List</label>
+                                    @Html.DropDownListFor(x => x.StudentId,
+                                    Model.StudentList.Select(d => new SelectListItem {
+                                    Value = d.Id.ToString(),
+                                    Text = d.StudentName}), "Select Student", new { @class = "form-control" })
+                                </div>
+                            </div>
+
+                            @*Save/Cancel Buttons*@
+                            <div class="form-row">
+                                <div class="form-group col-md-4">
+                                    <button type="button" class="btn btn-default cancel-button">@L("Cancel")</button>
+                                    <button type="submit" class="btn btn-primary save-button">@L("Save")</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

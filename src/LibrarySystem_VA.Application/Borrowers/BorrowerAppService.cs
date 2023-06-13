@@ -50,7 +50,7 @@ namespace LibrarySystem_VA.Borrowers
             return base.GetEntityByIdAsync(id);
         }
 
-        public async Task<PagedResultDto<BorrowerDto>> GetAllBorrowersWithBookAndStudent(PagedBorrowerResultRequestDto input)
+        public async Task<PagedResultDto<BorrowerDto>> GetAllBorrowerWithStudentAndBook(PagedBorrowerResultRequestDto input)
         {
             var query = await _repository.GetAll()
                 .Include(x => x.Book)
@@ -60,5 +60,6 @@ namespace LibrarySystem_VA.Borrowers
 
             return new PagedResultDto<BorrowerDto>(query.Count(), query);
         }
+        
     }
 }

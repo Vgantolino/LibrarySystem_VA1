@@ -3,8 +3,6 @@
     var _bookCategoryService = abp.services.app.bookCategory,
         l = abp.localization.getSource('LibrarySystem_VA'),
         _$form = $('form[name=BookCategoryForm]');
-    _indexPage = "/BookCategory";
-
 
     //Save
     _$form.find('.save-button').on('click', (e) => {

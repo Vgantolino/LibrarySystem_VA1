@@ -1,12 +1,12 @@
 ﻿@using LibrarySystem_VA.Web.Models.Borrowers;
 @model BorrowerListViewModel
 
-@*@section scripts
+@section scripts
 {
     <environment names="Development">
-        <script src="~/view-resources/Views/__/__" asp-append-version="true"></script>
+        <script src="~/view-resources/Views/Borrowers/Index.js" asp-append-version="true"></script>
     </environment>
-}*@
+}
 
 <section class="content-header">
     <div class="container-fluid">
@@ -15,8 +15,10 @@
                 <h1>@L("Borrowers")</h1>
             </div>
             <div class="col-sm-6">
-                <a class="btn bg-blue float-sm-right" asp-controller="Borrowers" asp-action="Create">
-                    <i class="fa fa-plus-square"></i>
+                <a style="border-radius:40px; border-color:#0079FF; background:#0079FF; color:#fff; font-size:16px;
+                          font-weight:500; text-transform:uppercase" 
+                   class="btn bg-blue float-sm-right" asp-controller="Borrowers" asp-action="CreateOrEdit">
+                <i class="fa fa-plus-square"></i>
                     @L("Create")
                 </a>
             </div>
@@ -29,7 +31,8 @@
         <div class="row">
             <div class="col-12">
                 <div class="card">
-                    
+
+                    @*Search*@
                     <div class="card-header">
                         <div class="row">
                             <div class="col-md-6">
@@ -41,7 +44,7 @@
                                                     <span class="fas fa-search" aria-hidden="true"></span>
                                                 </button>
                                             </div>
-                                            <input class="form-control txt-search" type="text" name="Keyword" placeholder="Search" />
+                                            <input class="form-control" type="text" name="searchBorrower" placeholder="Search" />
                                         </div>
                                     </form>
                                 </div>
@@ -52,7 +55,7 @@
                     @*Table*@
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table id="BorrowerTable" class="table table-striped table-bordered">
+                            <table id="BorrowersTable" class="table table-striped table-bordered">
                                 <thead>
                                     <tr>
                                         <th>@L("BorrowDate")</th>
@@ -64,25 +67,28 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach (var borrower in Model.Borrowers)
+                                    @foreach (var borrower in Model?.Borrowers)
                                     {
                                         <tr>
-                                            <td>@borrower?.BorrowDate.ToString("MM/dd/yyyy")</td>
-                                            <td>@borrower?.ExpectedReturnDate.ToString("MM/dd/yyyy")</td>
-                                            <td>@borrower?.ReturnDate.ToString("MM/dd/yyyy")</td>
+                                            <td>@borrower?.BorrowDate.ToString("yyyy-MM-dd")</td>
+                                            <td>@borrower?.ExpectedReturnDate.ToString("yyyy-MM-dd")</td>
+                                            <td>@borrower?.ReturnDate</td>
                                             <td>@borrower.Book?.BookTitle</td>
                                             <td>@borrower.Student?.StudentName</td>
                                             <td>
-                                                <button style="border-color:#6C9BCF; background:#6C9BCF; color:#fff; font-size:14px;
-                                                               font-weight:500; text-transform: uppercase"
-                                                        type="button" class="btn btn-sm edit-dept" data-dept-id="@borrower?.Id">
-                                                <i class="fas fa-pencil-alt"></i> Edit
+                                                <button style="border-color:#6C9BCF; background:#6C9BCF; color:#fff;
+                                                               font-size:14px; font-weight:500; text-transform: uppercase"
+                                                        type="button" class="btn btn-sm edit-borrower" data-borrower-id="@borrower?.Id">
+
+                                                    <i class="fas fa-pencil-alt"></i> Edit
                                                 </button>
 
-                                                <button style="border-color:#DD5353; background:#DD5353; color:#fff; font-size:14px;
-                                                               font-weight:500; text-transform: uppercase"
-                                                        type="button" class="btn btn-sm delete-dept" data-dept-id="@borrower?.Id" data-dept-name="@borrower.Student?.StudentName">
-                                                <i class="fas fa-trash"></i> Delete
+                                                <button style="border-color:#DD5353; background:#DD5353; color:#fff;
+                                                               font-size:14px; font-weight:500; text-transform: uppercase"
+                                                        type="button" class="btn btn-sm delete-borrower" data-borrower-id="@borrower?.Id"
+                                                        data-borrower-name="@borrower.Student?.StudentName">
+
+                                                    <i class="fas fa-trash"></i> Delete
                                                 </button>
                                             </td>
                                         </tr>
