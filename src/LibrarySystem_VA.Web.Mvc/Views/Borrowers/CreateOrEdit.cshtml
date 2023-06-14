@@ -49,10 +49,19 @@
                                 <div class="form-row">
                                     <div class="form-group col-md-4">
                                         <label for="ReturnDate">Return Date</label>
-                                        <input class="form-control" type="date" name="ReturnDate" value="@Model?.ReturnDate" placeholder="Return Date">
+                                        <input style="visibility: hidden" class="form-control" type="date" name="ReturnDate" value="@Model?.ReturnDate" placeholder="Return Date">
                                     </div>
                                 </div>
-                            }                            
+                            }
+                            else
+                            {
+                                <div class="form-row">
+                                    <div class="form-group col-md-4">
+                                        <label for="ReturnDate">Return Date</label>
+                                        <input style="visibility: hidden" class="form-control" type="date" name="ReturnDate" value="@Model?.ReturnDate" placeholder="Return Date">
+                                    </div>
+                                </div>
+                            }
 
                             @*Book Title*@
                             <div class="form-row">

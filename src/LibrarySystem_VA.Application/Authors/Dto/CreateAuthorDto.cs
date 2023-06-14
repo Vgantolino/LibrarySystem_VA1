@@ -9,8 +9,6 @@ using System.Threading.Tasks;
 
 namespace LibrarySystem_VA.Authors.Dto
 {
-
-    [AutoMapFrom(typeof(Author))]
     [AutoMapTo(typeof(Author))]
 
     public class CreateAuthorDto : EntityDto<int>

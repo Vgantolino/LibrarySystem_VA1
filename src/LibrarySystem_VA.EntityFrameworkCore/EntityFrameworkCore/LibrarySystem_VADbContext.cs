@@ -27,11 +27,11 @@ namespace LibrarySystem_VA.EntityFrameworkCore
         //Book Category
         public virtual DbSet<BookCategory> BookCategories { get; set; }
 
-        //Books
-        public virtual DbSet<Book> Books { get; set; }
-
         //Authors
         public virtual DbSet<Author> Authors { get; set; }
+
+        //Books
+        public virtual DbSet<Book> Books { get; set; }        
 
         //Borrowers
         public virtual DbSet<Borrower> Borrowers { get; set; }

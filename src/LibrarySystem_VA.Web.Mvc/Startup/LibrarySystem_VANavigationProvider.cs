@@ -41,16 +41,8 @@ namespace LibrarySystem_VA.Web.Startup
                     new MenuItemDefinition(
                         PageNames.BookCategories,
                         L("BookCategories"),
-                        url: "BookCategory",
+                        url: "BookCategories",
                         icon: "fas fa-book-open",
-                        requiresAuthentication: true
-                    )
-                ).AddItem(
-                    new MenuItemDefinition(
-                        PageNames.Books,
-                        L("Books"),
-                        url: "Books",
-                        icon: "fas fa-book",
                         requiresAuthentication: true
                     )
                 ).AddItem(
@@ -59,6 +51,14 @@ namespace LibrarySystem_VA.Web.Startup
                         L("Authors"),
                         url: "Authors", 
                         icon: "fas fa-pen-nib",
+                        requiresAuthentication: true
+                    )
+                ).AddItem(
+                    new MenuItemDefinition(
+                        PageNames.Books,
+                        L("Books"),
+                        url: "Books",
+                        icon: "fas fa-book",
                         requiresAuthentication: true
                     )
                 ).AddItem(

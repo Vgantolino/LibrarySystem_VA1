@@ -16,7 +16,7 @@
         }
 
         var bookCategory = _$form.serializeFormToObject();
-        bookCategory.DepartmentId = parseInt(bookCategory.DepartmentId);
+        //bookCategory.DepartmentId = parseInt(bookCategory.DepartmentId);
         abp.ui.setBusy(_$form);
 
         if (bookCategory.Id != 0) { //update
@@ -43,7 +43,7 @@
     });
 
     function RedirectToIndex() {
-        window.location.href = "/BookCategory";
+        window.location.href = "/BookCategories";
     }
 
 })(jQuery);

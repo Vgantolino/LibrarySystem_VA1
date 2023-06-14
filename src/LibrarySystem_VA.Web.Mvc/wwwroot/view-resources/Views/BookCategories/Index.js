@@ -6,7 +6,7 @@
     //Edit
     $(document).on('click', '.edit-bookCategory', function () {
         var bookCategoryId = $(this).attr("data-bookCategory-id");
-        window.location.href = "/BookCategory/CreateOrEdit/" + bookCategoryId;
+        window.location.href = "/BookCategories/CreateOrEdit/" + bookCategoryId;
 
     });
 
@@ -23,7 +23,7 @@
             function (isConfirmed) {
                 if (isConfirmed) {
                     _bookCategoryService.delete({ id: bookCategoryId }).done(function () {
-                        window.location.href = "/BookCategory";
+                        window.location.href = "/BookCategories";
                     })
                 }
             }

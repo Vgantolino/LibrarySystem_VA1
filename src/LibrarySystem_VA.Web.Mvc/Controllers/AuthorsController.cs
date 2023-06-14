@@ -19,7 +19,7 @@ namespace LibrarySystem_VA.Web.Controllers
             _authorAppService = authorAppService;
         }
 
-        public async Task<IActionResult> Index(string searchAuthors)
+        public async Task<IActionResult> Index()
         {
             var authors = await _authorAppService.GetAllAuthors();
             var model = new AuthorListViewModel()
@@ -42,14 +42,10 @@ namespace LibrarySystem_VA.Web.Controllers
                     Id = id,
                     Name = author.Name
                 };
-
-                return View(model);
             }
 
-            else
-            {
-                return View();
-            }
-        }       
+            return View(model);
+        }
+
     }
 }

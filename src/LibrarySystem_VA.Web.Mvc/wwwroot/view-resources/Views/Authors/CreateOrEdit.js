@@ -1,4 +1,5 @@
-﻿(function ($) {
+﻿
+(function ($) {
 
     var _authorService = abp.services.app.author,
         l = abp.localization.getSource('LibrarySystem_VA'),
