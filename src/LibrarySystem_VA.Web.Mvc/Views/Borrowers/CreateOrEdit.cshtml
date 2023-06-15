@@ -31,7 +31,7 @@
                             <div class="form-row">
                                 <div class="form-group col-md-4">
                                     <label for="BorrowDate">Borrow Date</label>
-                                    <input class="form-control" type="date" name="BorrowDate" value="@Model?.BorrowDate" placeholder="Borrow Date">
+                                    <input class="form-control" type="date" id="BorrowDate" name="BorrowDate" value="@Model?.BorrowDate.ToString("yyyy-MM-dd")" placeholder="Borrow Date">
                                 </div>
                             </div>
 
@@ -39,29 +39,17 @@
                             <div class="form-row">
                                 <div class="form-group col-md-4">
                                     <label for="ExpectedReturnDate">Expected Return Date</label>
-                                    <input class="form-control" type="date" name="ExpectedReturnDate" value="@Model?.ExpectedReturnDate" placeholder="Expected Return Date">
+                                    <input class="form-control" type="date" id="ExpectedReturnDate" name="ExpectedReturnDate" value="@Model?.ExpectedReturnDate.ToString("yyyy-MM-dd")" placeholder="Expected Return Date">
                                 </div>
                             </div>
 
                             @*Return Date*@
-                            @if (Model.Id != 0)
-                            {
-                                <div class="form-row">
-                                    <div class="form-group col-md-4">
-                                        <label for="ReturnDate">Return Date</label>
-                                        <input style="visibility: hidden" class="form-control" type="date" name="ReturnDate" value="@Model?.ReturnDate" placeholder="Return Date">
-                                    </div>
+                            <div class="form-row" name="hidden-panel" id="hidden-panel" style="display:none">
+                                <div class="form-group col-md-4">
+                                    <label for="ReturnDate">Return Date</label>
+                                    <input class="form-control" type="date" id="ReturnDate" name="ReturnDate" value="@Model?.ReturnDate" placeholder="Return Date">
                                 </div>
-                            }
-                            else
-                            {
-                                <div class="form-row">
-                                    <div class="form-group col-md-4">
-                                        <label for="ReturnDate">Return Date</label>
-                                        <input style="visibility: hidden" class="form-control" type="date" name="ReturnDate" value="@Model?.ReturnDate" placeholder="Return Date">
-                                    </div>
-                                </div>
-                            }
+                            </div>
 
                             @*Book Title*@
                             <div class="form-row">

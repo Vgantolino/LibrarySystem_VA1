@@ -1,4 +1,5 @@
-﻿using LibrarySystem_VA.Books;
+﻿using Abp.Application.Services.Dto;
+using LibrarySystem_VA.Books;
 using LibrarySystem_VA.Books.Dto;
 using LibrarySystem_VA.Borrowers;
 using LibrarySystem_VA.Borrowers.Dto;
@@ -36,11 +37,25 @@ namespace LibrarySystem_VA.Web.Controllers
             return View(model);
         }
 
-        public async Task<IActionResult> CreateOrEdit()
+        public async Task<IActionResult> CreateOrEdit(int id)
         {
             var model = new CreateOrEditBorrowerViewModel();
             var book = await _bookAppService.GetAllAsync(new PagedBookResultRequestDto { MaxResultCount = int.MaxValue });
             var student = await _studentAppService.GetAllAsync(new PagedStudentResultRequestDto { MaxResultCount = int.MaxValue });
+
+            if (id != 0)
+            {
+                var borrower = await _borrowerAppService.GetAsync(new EntityDto<int>(id));
+                model = new CreateOrEditBorrowerViewModel()
+                {
+                    Id = id,
+                    BorrowDate = borrower.BorrowDate,
+                    ExpectedReturnDate = borrower.ExpectedReturnDate,
+                    ReturnDate = borrower.ReturnDate,
+                    BookId = borrower.BookId,
+                    StudentId = borrower.StudentId
+                };
+            }
 
             model.BookList = book.Items.ToList();
             model.StudentList = student.Items.ToList();

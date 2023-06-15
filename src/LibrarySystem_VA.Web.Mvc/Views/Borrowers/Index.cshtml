@@ -37,7 +37,7 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="abp-advanced-search">
-                                    <form name="searchBorrowerForm" class="form-horizontal" asp-controller="Borrowers" asp-action="Index" method="get">
+                                    <form name="searchBorrowerForm" asp-controller="Borrowers" asp-action="Index" method="get">
                                         <div class="input-group">
                                             <div class="input-group-prepend">
                                                 <button type="submit" class="btn bg-blue btn-search search-button">
@@ -72,7 +72,7 @@
                                         <tr>
                                             <td>@borrower?.BorrowDate.ToString("yyyy-MM-dd")</td>
                                             <td>@borrower?.ExpectedReturnDate.ToString("yyyy-MM-dd")</td>
-                                            <td>@borrower?.ReturnDate</td>
+                                            <td>@borrower.ReturnDate?.ToString("yyyy-MM-dd")</td>
                                             <td>@borrower.Book?.BookTitle</td>
                                             <td>@borrower.Student?.StudentName</td>
                                             <td>
