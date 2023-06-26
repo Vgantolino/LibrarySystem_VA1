@@ -7,7 +7,7 @@
 
     //Set Borrow and Expected Date In Create
     if (borrower.Id == 0) {
-        SetCurrentDate();
+        SetCurrentDate();        
         SetExpectedDate();
     }
 
@@ -68,13 +68,19 @@
         document.getElementById('BorrowDate').value = today;
     }
 
-    function SetExpectedDate(date, days) {
-        var borrowDate = new Date(document.getElementById('BorrowDate').value).getDate() + 7;
-        var borrowYear = new Date(document.getElementById('BorrowDate').value).getFullYear();
-        var borrowMonth = new Date(document.getElementById('BorrowDate').value).getMonth();
-        if (borrowMonth < 10) borrowMonth = "0" + borrowMonth;
+    function SetExpectedDate() {
+        var currentDate = new Date();
+        currentDate.setDate(currentDate.getDate() + 7);
 
-        return document.getElementById('ExpectedReturnDate').value = borrowYear + "-" + borrowMonth + "-" + borrowDate;
+        var newExpectedDate = currentDate.getFullYear() + "-" +
+                              ('0' + (currentDate.getMonth() + 1)).slice(-2) + "-" +
+                              ('0' + currentDate.getDate()).slice(-2);
+
+        //var newExpectedDate = ('0' + newDate).slice(-2) + '/' +
+        //                      ('0' + (currentDate.getMonth() + 1)).slice(-2) + '/' +
+        //                      currentDate.getFullYear();
+
+        document.getElementById('ExpectedReturnDate').value = newExpectedDate;
     }
 
 })(jQuery);

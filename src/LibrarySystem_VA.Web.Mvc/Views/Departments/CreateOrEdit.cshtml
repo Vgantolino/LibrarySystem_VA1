@@ -12,7 +12,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-6">
-                <h1>@L("NewDepartmentForm")</h1>
+                <h1 style="font-family:Helvetica, sans-serif"><b>@L("NewDepartmentForm")</b></h1>
             </div>
         </div>
     </div>
@@ -21,32 +21,29 @@
 <section class="content">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-12">
+            <div class="mx-auto col-10 col-md-8 col-lg-6">
                 <div class="card">
-
                     <div class="card-body" >
                         <form class="form-horizontal" name="DepartmentForm" role="form">
                             <input type="hidden" name="Id" value="@Model?.Id" />                           
                             
                             @*Department Name*@
                             <div class="form-row">
-                                <div class="form-group col-md-6">
+                                <div class="form-group col-12">
                                     <label for="DepartmentName">Name</label>
-                                    <input style="background:#F8F6F4; border-radius:5px; border-color:#555; font-size:16px; color:#555"
-                                           aria-label="Small" type="text" class="form-control" name="Name" value="@Model?.Name" placeholder="Department Name">
+                                    <input aria-label="Small" type="text" class="form-control" name="Name" value="@Model?.Name" placeholder="Department Name"
+                                           style="border-radius:5px; font-size:16px;">
                                 </div>
                             </div>                
 
                             @*Buttons*@
                             <div class="form-row">
                                     <div class="form-group col-md-6">
-                                        <button style="border-radius:40px; border-color:#526D82; background:#526D82; color:#fff; font-size:16px; 
-                                                       font-weight:500; text-transform: uppercase"
-                                                type="button" class="btn btn-round cancel-button">@L("Cancel")</button>
+                                    <button type="button" class="btn btn-round cancel-button"
+                                            style="border-radius:15px; border-color:#545454; background:#545454; color:#fff; font-size:16px; font-weight:500; text-transform: uppercase">@L("Cancel")</button>
 
-                                        <button style="border-radius:40px; border-color:#8bbabb; background:#8bbabb; color:#fff; font-size:16px;
-                                                       font-weight:500; text-transform: uppercase"
-                                                type="submit" class="btn rounded-pill save-button">@L("Save")</button>
+                                    <button type="submit" class="btn btn-round save-button"
+                                            style="border-radius:15px; border-color:#0F7173; background:#0F7173; color:#fff; font-size:16px; font-weight:500; text-transform: uppercase">@L("Save")</button>
                                     </div>
                             </div>
                         </form>

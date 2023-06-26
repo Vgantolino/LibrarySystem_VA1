@@ -12,15 +12,13 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-6">
-                <h1>@L("Departments")</h1>
+                <h1 style="font-family:Helvetica, sans-serif"><b>@L("Departments")</b></h1>
             </div>
             <div class="col-sm-6">
-                <a style="border-radius:40px; border-color:#0079FF; background:#0079FF; color:#fff; font-size:16px;
+                <a style="border-radius:15px; border-color:#027BCE; background:#027BCE; color:#fff; font-size:16px;
                           font-weight:500; text-transform:uppercase"
                    class="btn float-sm-right" asp-controller="Departments" asp-action="CreateOrEdit">
-                    <i class="fa fa-plus-square"></i>
-                    @L("Create")
-                </a>
+                    <i class="fa fa-plus-square"></i> @L("Create") </a>
             </div>
         </div>
     </div>
@@ -35,19 +33,17 @@
                     @*Search*@
                     <div class="card-header">
                         <div class="row">
-                            <div class="col-md-6">
-                                <div class="abp-advanced-search">
-                                    <form name="searchDeptForm" class="form-horizontal" asp-controller="Departments" asp-action="Index" method="get">
-                                        <div class="input-group">
-                                            <div class="input-group-prepend">
-                                                <button type="submit" class="btn bg-blue btn-search search-button">
-                                                    <span class="fas fa-search" aria-hidden="true"></span>
+                            <div class="col-md-3">
+                                <form name="searchDeptForm" class="form-horizontal" asp-controller="Departments" asp-action="Index" method="get">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control txt-search" name="SearchDept" placeholder="Search" />
+                                            <div class="input-group-append">
+                                                <button class="btn btn-secondary btn-search search-button" type="submit" style="color:#fff; border-color:#061826; background:#061826">
+                                                    <i class="fa fa-search"></i>
                                                 </button>
                                             </div>
-                                            <input class="form-control txt-search" type="text" name="SearchDept" placeholder="Search" />
-                                        </div>
-                                    </form>
-                                </div>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -55,12 +51,12 @@
                     @*Table*@
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table id="DepartmentTable" class="table thead-dark table-hover table-bordered">
-                                <thead>
-                                        <tr>                                 
-                                            <th style="width:100px">@L("DeptID")</th>
-                                            <th style="width:170px">@L("DeptName")</th>
-                                            <th style="width: 100px">@L("Actions")</th>
+                            <table id="DepartmentTable" class="table table-striped table-hover" style="font-size:0.9em; font-family:Helvetica, sans-serif;">
+                                <thead style="background-color:#C1CAD6">
+                                        <tr">                                 
+                                            <th style="width:160px">@L("DeptID")</th>
+                                            <th style="width:250px">@L("DeptName")</th>
+                                            <th style="width: 20px">@L("Actions")</th>
                                         </tr>
                                 </thead>
                                 <tbody>
@@ -70,30 +66,13 @@
                                             <td>@department?.Id</td>
                                             <td>@department?.Name</td>
                                             <td>
-                                                <button style="border-color:#6C9BCF;
-                                                               background:#6C9BCF;
-                                                               color:#fff;
-                                                               font-size:14px;
-                                                               font-weight:500;
-                                                               text-transform: uppercase"
-                                                        type="button" 
-                                                        class="btn btn-sm edit-dept" 
-                                                        data-dept-id="@department?.Id">
-
+                                                <button type="button" class="btn btn-sm edit-dept" data-dept-id="@department?.Id"
+                                                        style="border-radius:10px; border-color:#3E6680; background:#3E6680; color:#fff;">
                                                     <i class="fas fa-pencil-alt"></i> Edit
                                                 </button>
 
-                                                <button style="border-color:#DD5353;
-                                                               background:#DD5353;
-                                                               color:#fff;
-                                                               font-size:14px;
-                                                               font-weight:500;
-                                                               text-transform: uppercase"
-                                                        type="button"
-                                                        class="btn btn-sm delete-dept"
-                                                        data-dept-id="@department?.Id"
-                                                        data-dept-name="@department.Name">
-
+                                                <button type="button" class="btn btn-sm delete-dept" data-dept-id="@department?.Id" data-dept-name="@department.Name"
+                                                        style="border-radius:10px; border-color:#D16666; background:#D16666; color:#fff;">
                                                     <i class="fas fa-trash"></i> Delete
                                                 </button>
                                             </td>

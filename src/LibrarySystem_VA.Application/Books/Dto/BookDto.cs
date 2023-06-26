@@ -18,7 +18,7 @@ namespace LibrarySystem_VA.Books.Dto
     {
         public string BookTitle { get; set; }
         public string BookPublisher { get; set; }        
-        public bool? IsBorrowed { get; set; }
+        public bool IsBorrowed { get; set; }
         public int? BookCategoryId { get; set; }
         public BookCategoryDto BookCategory { get; set; }
         public int? AuthorId { get; set; }

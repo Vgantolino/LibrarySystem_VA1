@@ -70,26 +70,61 @@
                                     @foreach (var borrower in Model?.Borrowers)
                                     {
                                         <tr>
-                                            <td>@borrower?.BorrowDate.ToString("yyyy-MM-dd")</td>
-                                            <td>@borrower?.ExpectedReturnDate.ToString("yyyy-MM-dd")</td>
-                                            <td>@borrower.ReturnDate?.ToString("yyyy-MM-dd")</td>
-                                            <td>@borrower.Book?.BookTitle</td>
-                                            <td>@borrower.Student?.StudentName</td>
+                                            @if (borrower.ReturnDate > borrower.ExpectedReturnDate)
+                                            {
+                                                <td style="background-color:#EC7272">@borrower?.BorrowDate.ToString("yyyy-MM-dd")</td>
+                                                <td style="background-color:#EC7272">@borrower?.ExpectedReturnDate.ToString("yyyy-MM-dd")</td>
+                                                <td style="background-color:#EC7272">@borrower.ReturnDate?.ToString("yyyy-MM-dd")</td>
+                                                <td style="background-color:#EC7272">@borrower.Book?.BookTitle</td>
+                                                <td style="background-color:#EC7272">@borrower.Student?.StudentName</td>
+                                            }
+                                            else
+                                            {
+                                                <td>@borrower?.BorrowDate.ToString("yyyy-MM-dd")</td>
+                                                <td>@borrower?.ExpectedReturnDate.ToString("yyyy-MM-dd")</td>
+                                                <td>@borrower.ReturnDate?.ToString("yyyy-MM-dd")</td>
+                                                <td>@borrower.Book?.BookTitle</td>
+                                                <td>@borrower.Student?.StudentName</td>
+                                            }
                                             <td>
-                                                <button style="border-color:#6C9BCF; background:#6C9BCF; color:#fff;
+                                                @if (borrower.ReturnDate.HasValue)
+                                                {
+                                                    @*EDIT BUTTON*@
+                                                    <button style="border-color:#6C9BCF; background:#6C9BCF; color:#fff;
                                                                font-size:14px; font-weight:500; text-transform: uppercase"
-                                                        type="button" class="btn btn-sm edit-borrower" data-borrower-id="@borrower?.Id">
+                                                            type="button" disabled class="btn btn-sm edit-borrower" data-borrower-id="@borrower?.Id">
 
-                                                    <i class="fas fa-pencil-alt"></i> Edit
-                                                </button>
+                                                        <i class="fas fa-pencil-alt"></i> Edit
+                                                    </button>
 
-                                                <button style="border-color:#DD5353; background:#DD5353; color:#fff;
+                                                    @*DELETE BUTTON*@
+                                                    <button style="border-color:#DD5353; background:#DD5353; color:#fff;
                                                                font-size:14px; font-weight:500; text-transform: uppercase"
-                                                        type="button" class="btn btn-sm delete-borrower" data-borrower-id="@borrower?.Id"
-                                                        data-borrower-name="@borrower.Student?.StudentName">
+                                                            type="button" disabled class="btn btn-sm delete-borrower" data-borrower-id="@borrower?.Id"
+                                                            data-borrower-name="@borrower.Student?.StudentName">
 
-                                                    <i class="fas fa-trash"></i> Delete
-                                                </button>
+                                                        <i class="fas fa-trash"></i> Delete
+                                                    </button>
+                                                }
+                                                else
+                                                {
+                                                    @*EDIT BUTTON*@
+                                                    <button style="border-color:#6C9BCF; background:#6C9BCF; color:#fff;
+                                                               font-size:14px; font-weight:500; text-transform: uppercase"
+                                                            type="button" class="btn btn-sm edit-borrower" data-borrower-id="@borrower?.Id">
+
+                                                        <i class="fas fa-pencil-alt"></i> Edit
+                                                    </button>
+
+                                                    @*DELETE BUTTON*@
+                                                    <button style="border-color:#DD5353; background:#DD5353; color:#fff;
+                                                               font-size:14px; font-weight:500; text-transform: uppercase"
+                                                            type="button" class="btn btn-sm delete-borrower" data-borrower-id="@borrower?.Id"
+                                                            data-borrower-name="@borrower.Student?.StudentName">
+
+                                                        <i class="fas fa-trash"></i> Delete
+                                                    </button>
+                                                }
                                             </td>
                                         </tr>
                                     }

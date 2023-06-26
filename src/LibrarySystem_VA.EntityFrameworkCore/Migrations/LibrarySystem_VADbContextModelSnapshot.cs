@@ -1642,7 +1642,7 @@ namespace LibrarySystem_VA.Migrations
                     b.Property<DateTime?>("DeletionTime")
                         .HasColumnType("datetime2");
 
-                    b.Property<bool?>("IsBorrowed")
+                    b.Property<bool>("IsBorrowed")
                         .HasColumnType("bit");
 
                     b.Property<bool>("IsDeleted")

@@ -59,6 +59,8 @@ namespace LibrarySystem_VA.Web.Controllers
 
             model.BookList = book.Items.ToList();
             model.StudentList = student.Items.ToList();
+
+
             return View(model);
         }
 
