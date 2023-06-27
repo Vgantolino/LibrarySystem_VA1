@@ -50,23 +50,23 @@
                     @*Table*@
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table id="BookCategoryTable" class="table table-striped table-hover" style="font-size:0.9em; font-family:Helvetica, sans-serif;">
-                                <thead style="background-color:#C1CAD6">
+                            <table id="BookCategoryTable" class="table table-bordered table-hover" style="font-size:0.9em; font-family:Helvetica, sans-serif;">
+                                <thead style="background-color:#E7ECEF">
                                         <tr>
-                                            <th>@L("BookCategoryId")</th>
-                                            <th>@L("BookCategoryName")</th>
-                                            <th>@L("DeptName")</th>
-                                            <th style="width: 180px">@L("Actions")</th>
+                                            <th style="width: 80px; border:1px solid #252627; text-align:center">@L("BookCategoryId")</th>
+                                            <th style="width: 190px; border:1px solid #252627; text-align:center">@L("BookCategoryName")</th>
+                                            <th style="width: 200px; border:1px solid #252627; text-align:center">@L("DeptName")</th>
+                                            <th style="width: 50px; border:1px solid #252627; text-align:center">@L("Actions")</th>
                                         </tr>
                                 </thead>
                                 <tbody>
                                     @foreach (var bookCategory in Model.BookCategories)
                                     {
                                         <tr>
-                                            <td>@bookCategory?.Id</td>
-                                            <td>@bookCategory?.Name</td>
-                                            <td>@bookCategory.Department?.Name</td>
-                                            <td>
+                                            <td style="border:1px solid #252627; text-align:center">@bookCategory?.Id</td>
+                                            <td style="border:1px solid #252627;">@bookCategory?.Name</td>
+                                            <td style="border:1px solid #252627;">@bookCategory.Department?.Name</td>
+                                            <td style="border:1px solid #252627;">
                                                 <button type="button" class="btn btn-sm edit-bookCategory" data-bookCategory-id="@bookCategory?.Id"
                                                         style="border-radius:10px; border-color:#3E6680; background:#3E6680; color:#fff;">
                                                     <i class="fas fa-pencil-alt"></i> Edit </button>

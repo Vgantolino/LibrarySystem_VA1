@@ -8,6 +8,10 @@ using LibrarySystem_VA.Students;
 using LibrarySystem_VA.Students.Dto;
 using LibrarySystem_VA.Web.Models.Borrowers;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Data.SqlClient;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using Microsoft.EntityFrameworkCore.Storage;
+using System.Configuration;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -55,12 +59,15 @@ namespace LibrarySystem_VA.Web.Controllers
                     BookId = borrower.BookId,
                     StudentId = borrower.StudentId
                 };
+
+                model.BookList = book.Items.ToList();
+            }
+            else
+            {
+                model.BookList = book.Items.Where(x => x.IsBorrowed == false).ToList();                
             }
 
-            model.BookList = book.Items.ToList();
             model.StudentList = student.Items.ToList();
-
-
             return View(model);
         }
 

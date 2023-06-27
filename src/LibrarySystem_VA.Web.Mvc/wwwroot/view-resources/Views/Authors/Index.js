@@ -57,7 +57,7 @@
             {
                 targets: 0,
                 data: 'id',
-                defaultContent: '',
+                defaultContent: ''
             },
             {
                 targets: 1,
@@ -72,10 +72,12 @@
                 defaultContent: '',
                 render: (data, type, row, meta) => {
                     return [
-                        `   <button type="button" class="btn btn-sm bg-secondary edit-author" data-author-id="${row.id}">`,
+                        `   <button type="button" class="btn btn-sm edit-author" data-author-id="${row.id}"
+                                    style="border-radius:10px; border-color:#3E6680; background:#3E6680; color:#fff;">`,
                         `       <i class="fas fa-pencil-alt"></i> ${l('Edit')}`,
                         '   </button>',
-                        `   <button type="button" class="btn btn-sm bg-danger delete-author" data-author-id="${row.id}" data-author-name="${row.name}">`,
+                        `   <button type="button" class="btn btn-sm delete-author" data-author-id="${row.id}" data-author-name="${row.name}"
+                                    style="border-radius:10px; border-color:#D16666; background:#D16666; color:#fff;">`,
                         `       <i class="fas fa-trash"></i> ${l('Delete')}`,
                         '   </button>'
                     ].join('');

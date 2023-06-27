@@ -52,27 +52,27 @@
                     @*Table*@
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table id="StudentTable" class="table table-striped table-hover" style="font-size:0.9em; font-family:Helvetica, sans-serif;">
-                                <thead style="background-color:#C1CAD6">
+                            <table id="StudentTable" class="table table-bordered table-hover" style="font-size:0.9em; font-family:Helvetica, sans-serif;">
+                                <thead style="background-color:#E7ECEF">
                                         <tr>
-                                            <th>@L("StudentID")</th>
-                                            <th>@L("StudentName")</th>
-                                            <th>@L("StudentContactNumber")</th>
-                                            <th>@L("StudentEmail")</th>
-                                            <th>@L("DeptName")</th>
-                                            <th style="width: 180px">@L("Actions")</th>
+                                            <th style="width: 50px; border:1px solid #252627; text-align:center">@L("StudentID")</th>
+                                            <th style="width: 170px; border:1px solid #252627; text-align:center">@L("StudentName")</th>
+                                            <th style="width: 140px; border:1px solid #252627; text-align:center">@L("StudentContactNumber")</th>
+                                            <th style="width: 150px; border:1px solid #252627; text-align:center">@L("StudentEmail")</th>
+                                            <th style="width: 150px; border:1px solid #252627; text-align:center">@L("DeptName")</th>
+                                            <th style="width: 115px; border:1px solid #252627; text-align:center">@L("Actions")</th>
                                         </tr>
                                 </thead>
                                 <tbody>
                                     @foreach (var student in Model.Students)
                                     {
                                         <tr>
-                                            <td>@student?.Id</td>
-                                            <td>@student?.StudentName</td>
-                                            <td>@student?.StudentContactNumber</td>
-                                            <td>@student?.StudentEmail</td>
-                                            <td>@student.Department?.Name</td>
-                                            <td>
+                                            <td style="border:1px solid #252627; text-align:center">@student?.Id</td>
+                                            <td style="border:1px solid #252627">@student?.StudentName</td>
+                                            <td style="border:1px solid #252627">@student?.StudentContactNumber</td>
+                                            <td style="border:1px solid #252627">@student?.StudentEmail</td>
+                                            <td style="border:1px solid #252627">@student.Department?.Name</td>
+                                            <td style="border:1px solid #252627">
                                                 <button type="button" class="btn btn-sm edit-student" data-student-id="@student?.Id"
                                                         style="border-radius:10px; border-color:#3E6680; background:#3E6680; color:#fff;">
                                                     <i class="fas fa-pencil-alt"></i> Edit

@@ -12,7 +12,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-6">
-                <h1>@L("NewBorrowerForm")</h1>
+                <h1 style="font-family:Helvetica, sans-serif"><b>@L("NewBorrowerForm")</b></h1>
             </div>
         </div>
     </div>
@@ -21,7 +21,7 @@
 <section class="content">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-8">
+            <div class="mx-auto col-10 col-md-8 col-lg-6">
                 <div class="card">
                     <div class="card-body">
                         <form name="BorrowerForm" role="form" class="form-center">
@@ -29,31 +29,34 @@
 
                             @*Borrow Date*@
                             <div class="form-row">
-                                <div class="form-group col-md-4">
+                                <div class="form-group col-12">
                                     <label for="BorrowDate">Borrow Date</label>
-                                    <input class="form-control" type="date" id="BorrowDate" name="BorrowDate" value="@Model?.BorrowDate.ToString("yyyy-MM-dd")" placeholder="Borrow Date">
+                                    <input class="form-control" type="date" id="BorrowDate" name="BorrowDate" value="@Model?.BorrowDate.ToString("yyyy-MM-dd")" placeholder="Borrow Date"
+                                           style="border-radius:5px; font-size:16px;">
                                 </div>
                             </div>
 
                             @*Expected Return Date*@
                             <div class="form-row">
-                                <div class="form-group col-md-4">
+                                <div class="form-group col-12">
                                     <label for="ExpectedReturnDate">Expected Return Date</label>
-                                    <input class="form-control" type="date" id="ExpectedReturnDate" name="ExpectedReturnDate" value="@Model?.ExpectedReturnDate.ToString("yyyy-MM-dd")" placeholder="Expected Return Date">
+                                    <input class="form-control" type="date" id="ExpectedReturnDate" name="ExpectedReturnDate" value="@Model?.ExpectedReturnDate.ToString("yyyy-MM-dd")" placeholder="Expected Return Date"
+                                           style="border-radius:5px; font-size:16px;">
                                 </div>
                             </div>
 
                             @*Return Date*@
                             <div class="form-row" name="hidden-panel" id="hidden-panel" style="display:none">
-                                <div class="form-group col-md-4">
+                                <div class="form-group col-12">
                                     <label for="ReturnDate">Return Date</label>
-                                    <input class="form-control" type="date" id="ReturnDate" name="ReturnDate" value="@Model?.ReturnDate" placeholder="Return Date">
+                                    <input class="form-control" type="date" id="ReturnDate" name="ReturnDate" value="@Model?.ReturnDate" placeholder="Return Date"
+                                           style="border-radius:5px; font-size:16px;">
                                 </div>
                             </div>
 
                             @*Book Title*@
                             <div class="form-row">
-                                <div class="form-group col-md-4">
+                                <div class="form-group col-12">
                                     <label for="BookList">Book List</label>
                                     @Html.DropDownListFor(x => x.BookId,
                                         Model.BookList.Select(d => new SelectListItem {
@@ -64,7 +67,7 @@
 
                             @*Student Name*@
                             <div class="form-row">
-                                <div class="form-group col-md-4">
+                                <div class="form-group col-12">
                                     <label for="StudentList">Student List</label>
                                     @Html.DropDownListFor(x => x.StudentId,
                                     Model.StudentList.Select(d => new SelectListItem {
@@ -75,9 +78,11 @@
 
                             @*Save/Cancel Buttons*@
                             <div class="form-row">
-                                <div class="form-group col-md-4">
-                                    <button type="button" class="btn btn-default cancel-button">@L("Cancel")</button>
-                                    <button type="submit" class="btn btn-primary save-button">@L("Save")</button>
+                                <div class="form-group col-md-6">
+                                    <button type="button" class="btn btn-default cancel-button"
+                                            style="border-radius:15px; border-color:#545454; background:#545454; color:#fff; font-size:16px; font-weight:500; text-transform: uppercase">@L("Cancel")</button>
+                                    <button type="submit" class="btn btn-primary save-button"
+                                            style="border-radius:15px; border-color:#0F7173; background:#0F7173; color:#fff; font-size:16px; font-weight:500; text-transform: uppercase">@L("Save")</button>
                                 </div>
                             </div>
                         </form>

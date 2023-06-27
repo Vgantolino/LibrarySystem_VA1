@@ -12,7 +12,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-6">
-                <h1>@L("NewAuthorForm")</h1>
+                <h1 style="font-family:Helvetica, sans-serif"><b>@L("NewAuthorForm")</b></h1>
             </div>
         </div>
     </div>
@@ -21,7 +21,7 @@
 <section class="content">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-12">
+            <div class="mx-auto col-10 col-md-8 col-lg-6">
                 <div class="card">
                     <div class="card-body">
                         <form name="AuthorForm" role="form" class="form-horizontal">
@@ -29,16 +29,19 @@
                             
                             @*Author Name*@
                             <div class="form-row">
-                                <div class="form-group col-md-6">
+                                <div class="form-group col-12">
                                     <label for="AuthorName">Name</label>
-                                    <input class="form-control" type="text" name="Name" value="@Model?.Name" placeholder="Author Name">
+                                    <input class="form-control" type="text" name="Name" value="@Model?.Name" placeholder="Author Name"
+                                           style="border-radius:5px; font-size:16px;">
                                 </div>
                             </div>                        
 
                             <div class="form-row">
                                 <div class="form-group col-md-6">
-                                    <button type="button" class="btn btn-default cancel-button">@L("Cancel")</button>
-                                    <button type="submit" class="btn btn-primary save-button">@L("Save")</button>
+                                    <button type="button" class="btn btn-round cancel-button"
+                                            style="border-radius:15px; border-color:#545454; background:#545454; color:#fff; font-size:16px; font-weight:500; text-transform: uppercase"> @L("Cancel") </button>
+                                    <button type="submit" class="btn btn-round save-button"
+                                            style="border-radius:15px; border-color:#0F7173; background:#0F7173; color:#fff; font-size:16px; font-weight:500; text-transform: uppercase"> @L("Save") </button>
                                 </div>
                             </div>
                         </form>

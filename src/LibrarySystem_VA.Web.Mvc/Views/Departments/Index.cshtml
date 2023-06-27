@@ -15,10 +15,10 @@
                 <h1 style="font-family:Helvetica, sans-serif"><b>@L("Departments")</b></h1>
             </div>
             <div class="col-sm-6">
-                <a style="border-radius:15px; border-color:#027BCE; background:#027BCE; color:#fff; font-size:16px;
-                          font-weight:500; text-transform:uppercase"
-                   class="btn float-sm-right" asp-controller="Departments" asp-action="CreateOrEdit">
-                    <i class="fa fa-plus-square"></i> @L("Create") </a>
+                <a class="btn float-sm-right" asp-controller="Departments" asp-action="CreateOrEdit"
+                   style="border-radius:15px; border-color:#027BCE; background:#027BCE; color:#fff; font-size:16px; font-weight:500; text-transform:uppercase">
+                    <i class="fa fa-plus-square"></i> @L("Create") 
+                </a>
             </div>
         </div>
     </div>
@@ -51,21 +51,21 @@
                     @*Table*@
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table id="DepartmentTable" class="table table-striped table-hover" style="font-size:0.9em; font-family:Helvetica, sans-serif;">
-                                <thead style="background-color:#C1CAD6">
-                                        <tr">                                 
-                                            <th style="width:160px">@L("DeptID")</th>
-                                            <th style="width:250px">@L("DeptName")</th>
-                                            <th style="width: 20px">@L("Actions")</th>
+                            <table id="DepartmentTable" class="table table-bordered table-hover" style="font-size:0.9em; font-family:Helvetica, sans-serif;">
+                                <thead style="background-color:#E7ECEF">
+                                        <tr">
+                                            <th style="width:80px; border:1px solid #252627; text-align:center">@L("DeptID")</th>
+                                            <th style="width:350px; border:1px solid #252627; text-align:center">@L("DeptName")</th>
+                                            <th style="width:50px; border:1px solid #252627; text-align:center">@L("Actions")</th>
                                         </tr>
                                 </thead>
                                 <tbody>
                                     @foreach (var department in Model.Departments)
                                     {
                                         <tr>
-                                            <td>@department?.Id</td>
-                                            <td>@department?.Name</td>
-                                            <td>
+                                            <td style="border:1px solid #252627; text-align:center">@department?.Id</td>
+                                            <td style="border:1px solid #252627">@department?.Name</td>
+                                            <td style="border:1px solid #252627">
                                                 <button type="button" class="btn btn-sm edit-dept" data-dept-id="@department?.Id"
                                                         style="border-radius:10px; border-color:#3E6680; background:#3E6680; color:#fff;">
                                                     <i class="fas fa-pencil-alt"></i> Edit
