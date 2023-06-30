@@ -54,17 +54,6 @@
                                 </div>
                             </div>
 
-                            @*Book Title*@
-                            <div class="form-row">
-                                <div class="form-group col-12">
-                                    <label for="BookList">Book List</label>
-                                    @Html.DropDownListFor(x => x.BookId,
-                                        Model.BookList.Select(d => new SelectListItem {
-                                                      Value = d.Id.ToString(),
-                                                       Text = d.BookTitle}), "Select Books", new { @class = "form-control" })
-                                </div>
-                            </div>
-
                             @*Student Name*@
                             <div class="form-row">
                                 <div class="form-group col-12">
@@ -75,6 +64,17 @@
                                     Text = d.StudentName}), "Select Student", new { @class = "form-control" })
                                 </div>
                             </div>
+
+                            @*Book Title*@
+                            <div class="form-row">
+                                <div class="form-group col-12">
+                                    <label for="BookList">Book List</label>
+                                    @Html.DropDownListFor(x => x.BookId,
+                                        Model.BookList.Select(d => new SelectListItem {
+                                                      Value = d.Id.ToString(),
+                                                       Text = d.BookTitle}), "Select Books", new { @class = "form-control" })
+                                </div>
+                            </div>                            
 
                             @*Save/Cancel Buttons*@
                             <div class="form-row">

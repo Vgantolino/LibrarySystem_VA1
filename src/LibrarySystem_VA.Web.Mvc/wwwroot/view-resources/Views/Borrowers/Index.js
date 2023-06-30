@@ -2,6 +2,7 @@
     var _borrowerService = abp.services.app.borrower,
         l = abp.localization.getSource('LibrarySystem_VA')
     _$form = $('form[name=searchBorrowerForm]');
+    _$table = $('#BorrowersTable');
 
     //Edit
     $(document).on('click', '.edit-borrower', function () {
@@ -33,5 +34,7 @@
     _$form.find('.search-button').on('click', (e) => {
         window.location.href = "/Borrowers/Index";
     });
+
+
 
 })(jQuery);

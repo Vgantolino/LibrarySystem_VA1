@@ -30,13 +30,26 @@ namespace LibrarySystem_VA.Web.Controllers
             _studentAppService = studentAppService;
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string searchBorrower)
         {
             var borrower = await _borrowerAppService.GetAllBorrowerWithStudentAndBook(new PagedBorrowerResultRequestDto { MaxResultCount = int.MaxValue });
-            var model = new BorrowerListViewModel()
+            var model = new BorrowerListViewModel();
+
+            if (!string.IsNullOrEmpty(searchBorrower))
             {
-                Borrowers = borrower.Items.ToList()
-            };
+                model = new BorrowerListViewModel()
+                {
+                    Borrowers = borrower.Items.Where(o => o.Book.BookTitle.Contains(searchBorrower) ||
+                                                          o.Student.StudentName.Contains(searchBorrower)).ToList()
+                };
+            }
+            else
+            {
+                model = new BorrowerListViewModel()
+                {
+                    Borrowers = borrower.Items.ToList()
+                };
+            }
 
             return View(model);
         }
@@ -49,7 +62,7 @@ namespace LibrarySystem_VA.Web.Controllers
 
             if (id != 0)
             {
-                var borrower = await _borrowerAppService.GetAsync(new EntityDto<int>(id));
+                var borrower = await _borrowerAppService.GetBorrowerWithBook(id);
                 model = new CreateOrEditBorrowerViewModel()
                 {
                     Id = id,
@@ -60,7 +73,8 @@ namespace LibrarySystem_VA.Web.Controllers
                     StudentId = borrower.StudentId
                 };
 
-                model.BookList = book.Items.ToList();
+                model.BookList = book.Items.Where(x => x.IsBorrowed == false).ToList();
+
             }
             else
             {
