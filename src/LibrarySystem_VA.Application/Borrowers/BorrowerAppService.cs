@@ -111,7 +111,6 @@ namespace LibrarySystem_VA.Borrowers
                 .FirstOrDefaultAsync();
 
             return borrower;
-        }
-        
+        }    
     }
 }

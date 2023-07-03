@@ -7,6 +7,7 @@ using Abp.Extensions;
 using LibrarySystem_VA.Authorization.Users;
 using LibrarySystem_VA.Authors.Dto;
 using LibrarySystem_VA.Books.Dto;
+using LibrarySystem_VA.Borrowers.Dto;
 using LibrarySystem_VA.Entities;
 using LibrarySystem_VA.Roles.Dto;
 using LibrarySystem_VA.Users.Dto;
@@ -84,6 +85,19 @@ namespace LibrarySystem_VA.Books
                 .ToListAsync();
 
             return query;
-        }        
+        }
+
+        public async Task<BookDto> UpdateIsBorrowedIfDeletedInBorrowers(EntityDto<int> input)
+        {
+            var book = await GetAsync(input);
+
+            if (book.IsBorrowed == true)
+            {
+                book.IsBorrowed = false;                
+            }
+
+            var updateBook = await UpdateAsync(book);
+            return updateBook;
+        }
     }
 }

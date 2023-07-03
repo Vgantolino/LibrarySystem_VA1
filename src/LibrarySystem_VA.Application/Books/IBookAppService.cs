@@ -15,5 +15,6 @@ namespace LibrarySystem_VA.Books
     {
        Task<PagedResultDto<BookDto>> GetAllBooksWithBookCategoryAndAuthor(PagedBookResultRequestDto input);
        Task<List<BookDto>> GetAllAuthorsUnderBooks();
+        Task<BookDto> UpdateIsBorrowedIfDeletedInBorrowers(EntityDto<int> input);
     }
 }

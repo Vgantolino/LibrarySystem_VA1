@@ -13,5 +13,6 @@ namespace LibrarySystem_VA.Borrowers
     {
         Task<PagedResultDto<BorrowerDto>> GetAllBorrowerWithStudentAndBook(PagedBorrowerResultRequestDto input);
         Task<BorrowerDto> GetBorrowerWithBook(int id);
+        //Task UpdateIsBorrowedIfDeletedInBorrowers(BorrowerDto input);
     }
 }
