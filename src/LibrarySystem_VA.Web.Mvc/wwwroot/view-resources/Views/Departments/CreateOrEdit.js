@@ -4,9 +4,16 @@
         l = abp.localization.getSource('LibrarySystem_VA'),
         _$form = $('form[name=DepartmentForm]');
 
+    //Save
     _$form.find('.save-button').on('click', (e) => {
         e.preventDefault();
         save();
+    });
+
+    //Cancel
+    _$form.find('.cancel-button').on('click', (e) => {
+        redirectToIndex();
+
     });
 
     function save() {
@@ -31,12 +38,7 @@
             })
 
         }
-    }
-
-    _$form.find('.cancel-button').on('click', (e) => {
-        redirectToIndex();
-
-    });
+    }   
 
     function redirectToIndex() {
         window.location.href = "/Departments";

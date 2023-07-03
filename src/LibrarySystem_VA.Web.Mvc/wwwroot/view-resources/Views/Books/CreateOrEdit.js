@@ -9,6 +9,12 @@
         BookSave();
     });
 
+    //Cancel
+    _$form.find('.cancel-button').on('click', (e) => {
+        e.preventDefault();
+        RedirectToIndex();
+    });
+
     function BookSave() {
         if (!_$form.valid()) {
             return;
@@ -31,13 +37,7 @@
                 abp.ui.clearBusy(_$form);
             })
         }
-    }
-
-    //CANCEL
-    _$form.find('.cancel-button').on('click', (e) => {
-        e.preventDefault();
-        RedirectToIndex();
-    });
+    }    
 
     //Return to Index Page
     function RedirectToIndex() {

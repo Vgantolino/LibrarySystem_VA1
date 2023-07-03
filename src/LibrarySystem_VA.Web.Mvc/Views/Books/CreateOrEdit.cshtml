@@ -26,46 +26,44 @@
                      <div class="card-body">
                         <form name="BookForm" role="form" class="form-horizontal">
                             <input type="hidden" name="Id" value="@Model?.Id"/>
-                            
-                                    @*Book Title*@
-                                    <div class="form-row">
-                                        <div class="form-group col-12">                                    
-                                            <label for="bookTitle">Book Title</label>
-                                            <input type="text" class="form-control" id="bookTitle" name="BookTitle" value="@Model?.BookTitle" placeholder="Book Title"
-                                                   style="border-radius:5px; font-size:16px;">
-                                        </div>
-                                    </div>
+                                
+                            <div class="form-row">
+                                @*Book Title*@
+                                <div class="form-group col-12">                                    
+                                    <label for="bookTitle">Book Title<span class="required" style="color:red">*</span></label>
+                                    <input type="text" required class="form-control" id="bookTitle" name="BookTitle" value="@Model?.BookTitle" placeholder="Book Title"
+                                           style="border-radius:5px; font-size:16px;">
+                                </div>
 
-                                    @*Book Publisher*@
-                                    <div class="form-row">
-                                        <div class="form-group col-12">
-                                            <label for="bookPublisher">Book Publisher</label>
-                                            <input type="text" class="form-control" id="bookPublisher" name="BookPublisher" value="@Model?.BookPublisher" placeholder="Book Publisher"
-                                                   style="border-radius:5px; font-size:16px;">
-                                        </div>
-                                    </div>
+                                @*Book Publisher*@
+                                <div class="form-group col-12">
+                                    <label for="bookPublisher">Book Publisher</label>
+                                    <input type="text" class="form-control" id="bookPublisher" name="BookPublisher" value="@Model?.BookPublisher" placeholder="Book Publisher"
+                                           style="border-radius:5px; font-size:16px;">
+                                </div>
 
-                                    @*Book Author*@
-                                    <div class="form-row">
-                                        <div class="form-group col-12">
-                                            <label for="BookAuthorList">Book Author List</label>
-                                            @Html.DropDownListFor(x => x.AuthorId,
-                                                Model.AuthorList.Select(d => new SelectListItem {
-                                                                        Value = d.Id.ToString(),
-                                                                        Text = d.Name}), "Select Book Authors", new { @class = "form-control"})
-                                        </div>
-                                    </div>
+                                @*Book Author*@
+                                <div class="form-group col-12">
+                                    <label for="BookAuthorList">Book Author List<span class="required" style="color:red">*</span></label>
+                                    @Html.DropDownListFor(x => x.AuthorId,
+                                    Model.AuthorList.Select(d => new SelectListItem {
+                                    Value = d.Id.ToString(),
+                                    Text = d.Name}), "Select Book Authors", new { @class = "form-control", required = "required" })
+                                </div>
 
-                                    @*Book Category List*@
-                                    <div class="form-row">
-                                        <div class="form-group col-12">
-                                            <label for="BookCategoryList">Book Category List</label>
-                                            @Html.DropDownListFor(x => x.BookCategoryId,
-                                                Model.BookCategoryList.Select(d => new SelectListItem {
-                                                                              Value = d.Id.ToString(),
-                                                                              Text = d.Name}), "Select Book Category", new { @class = "form-control" })
-                                        </div>
-                                    </div>
+                                @*Book Category List*@
+                                <div class="form-group col-12">
+                                    <label for="BookCategoryList">Book Category List<span class="required" style="color:red">*</span></label>
+                                    @Html.DropDownListFor(x => x.BookCategoryId,
+                                    Model.BookCategoryList.Select(d => new SelectListItem {
+                                    Value = d.Id.ToString(),
+                                    Text = d.Name}), "Select Book Category", new { @class = "form-control", required = "required" })
+                                </div>
+
+                                <p style="color:#545454;font-family:Helvetica, sans-serif">
+                                    Required field <span class="required" style="color:red; font-family:Helvetica, sans-serif"><b>*</b></span>
+                                </p>
+                            </div>
 
                             @*Save/Cancel Buttons*@
                             <div class="form-row">

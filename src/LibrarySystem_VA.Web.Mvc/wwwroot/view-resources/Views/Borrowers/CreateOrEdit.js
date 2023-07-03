@@ -3,7 +3,7 @@
     var _borrowerService = abp.services.app.borrower,
         l = abp.localization.getSource('LibrarySystem_VA'),
         _$form = $('form[name=BorrowerForm]');
-    var borrower = _$form.serializeFormToObject();
+    var borrower = _$form.serializeFormToObject();   
 
     //Set Borrow and Expected Date In Create
     if (borrower.Id == 0) {
@@ -25,7 +25,7 @@
         BorrowerSave();
     });
 
-    //CANCEL
+    //Cancel
     _$form.find('.cancel-button').on('click', (e) => {
         e.preventDefault();
         RedirectToIndex();
@@ -75,10 +75,6 @@
         var newExpectedDate = currentDate.getFullYear() + "-" +
                               ('0' + (currentDate.getMonth() + 1)).slice(-2) + "-" +
                               ('0' + currentDate.getDate()).slice(-2);
-
-        //var newExpectedDate = ('0' + newDate).slice(-2) + '/' +
-        //                      ('0' + (currentDate.getMonth() + 1)).slice(-2) + '/' +
-        //                      currentDate.getFullYear();
 
         document.getElementById('ExpectedReturnDate').value = newExpectedDate;
     }

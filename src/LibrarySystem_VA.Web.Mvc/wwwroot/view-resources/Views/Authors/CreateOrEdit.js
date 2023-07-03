@@ -11,6 +11,11 @@
         SaveAuthor();
     });
 
+    //Cancel
+    _$form.find('.cancel-button').on('click', (e) => {
+        RedirectToIndex();
+    });
+
     function SaveAuthor() {
         if (!_$form.valid()) {
             return;
@@ -31,12 +36,7 @@
                 RedirectToIndex();
             })
         }
-    }
-
-    //Cancel
-    _$form.find('.cancel-button').on('click', (e) => {
-        RedirectToIndex();
-    });
+    }    
 
     function RedirectToIndex() {
         window.location.href = "/Authors";

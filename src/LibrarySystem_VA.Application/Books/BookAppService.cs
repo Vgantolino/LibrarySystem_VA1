@@ -73,14 +73,17 @@ namespace LibrarySystem_VA.Books
 
             return new PagedResultDto<BookDto>(query.Count(), query);
         }
-        public async Task<List<BookDto>> GetAllBooks()
+
+        public async Task<List<BookDto>> GetAllAuthorsUnderBooks()
         {
             var query = await _repository.GetAll()
-                .Select(x =>ObjectMapper.Map<BookDto>(x))
+                .Include(x => x.BookCategory)
+                .Include(x => x.Author)
+                .Where(x => !x.IsBorrowed)
+                .Select(x => ObjectMapper.Map<BookDto>(x))
                 .ToListAsync();
 
             return query;
-        }
-        
+        }        
     }
 }

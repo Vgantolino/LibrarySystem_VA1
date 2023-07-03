@@ -14,7 +14,6 @@ namespace LibrarySystem_VA.Books
     public interface IBookAppService : IAsyncCrudAppService<BookDto,int,PagedBookResultRequestDto,CreateBookDto,BookDto>
     {
        Task<PagedResultDto<BookDto>> GetAllBooksWithBookCategoryAndAuthor(PagedBookResultRequestDto input);
-        //Task<PagedResultDto<AuthorDto>> GetAllBooksWithBookAuthor(PagedAuthorResultRequestDto input);
-        Task<List<BookDto>> GetAllBooks();
+       Task<List<BookDto>> GetAllAuthorsUnderBooks();
     }
 }

@@ -30,22 +30,24 @@
                             @*Book Category Name*@
                             <div class="form-row">
                                 <div class="form-group col-12">
-                                    <label for="bookCategoryName">Book Category Name</label>
-                                    <input class="form-control" type="text" name="Name" value="@Model?.Name" placeholder="Book Category Name"
+                                    <label for="bookCategoryName">Book Category Name<span class="required" style="color:red">*</span></label>
+                                    <input class="form-control" type="text" required name="Name" value="@Model?.Name" placeholder="Book Category Name"
                                            style="border-radius:5px; font-size:16px;">
                                 </div>
-                            </div>
-                            
-                            @*Department List*@
-                            <div class="form-row">
+
+                                @*Department List*@
                                 <div class="form-group col-12">
-                                    <label for="DepartmentList">Department List</label>
+                                    <label for="DepartmentList">Department List<span class="required" style="color:red">*</span></label>
                                     @Html.DropDownListFor(x => x.DepartmentId,
-                                        Model.DepartmentList.Select(d => new SelectListItem {
-                                                                    Value = d.Id.ToString(),
-                                                                    Text = d.Name}), "Select Department", new { @class = "form-control" })
+                                    Model.DepartmentList.Select(d => new SelectListItem {
+                                    Value = d.Id.ToString(),
+                                    Text = d.Name}), "Select Department", new { @class = "form-control", required = "required"})
                                 </div>
-                            </div>
+
+                                <p style="color:#545454;font-family:Helvetica, sans-serif">
+                                    Required field <span class="required" style="color:red; font-family:Helvetica, sans-serif"><b>*</b></span>
+                                </p>
+                            </div>                 
                             
                             @*Save/Cancel Buttons*@
                             <div class="form-row">

@@ -4,16 +4,14 @@ using LibrarySystem_VA.Books.Dto;
 using LibrarySystem_VA.Borrowers;
 using LibrarySystem_VA.Borrowers.Dto;
 using LibrarySystem_VA.Controllers;
+using LibrarySystem_VA.Entities;
 using LibrarySystem_VA.Students;
 using LibrarySystem_VA.Students.Dto;
 using LibrarySystem_VA.Web.Models.Borrowers;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Data.SqlClient;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
-using Microsoft.EntityFrameworkCore.Storage;
-using System.Configuration;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 
 namespace LibrarySystem_VA.Web.Controllers
 {
@@ -57,8 +55,8 @@ namespace LibrarySystem_VA.Web.Controllers
         public async Task<IActionResult> CreateOrEdit(int id)
         {
             var model = new CreateOrEditBorrowerViewModel();
-            var book = await _bookAppService.GetAllAsync(new PagedBookResultRequestDto { MaxResultCount = int.MaxValue });
-            var student = await _studentAppService.GetAllAsync(new PagedStudentResultRequestDto { MaxResultCount = int.MaxValue });
+            var books = await _bookAppService.GetAllAuthorsUnderBooks();
+            var student = await _studentAppService.GetAllStudents();
 
             if (id != 0)
             {
@@ -70,18 +68,15 @@ namespace LibrarySystem_VA.Web.Controllers
                     ExpectedReturnDate = borrower.ExpectedReturnDate,
                     ReturnDate = borrower.ReturnDate,
                     BookId = borrower.BookId,
+                    IsBorrowed = borrower.Book.IsBorrowed,
                     StudentId = borrower.StudentId
                 };
-
-                model.BookList = book.Items.Where(x => x.IsBorrowed == false).ToList();
-
-            }
-            else
-            {
-                model.BookList = book.Items.Where(x => x.IsBorrowed == false).ToList();                
+                var book = await _bookAppService.GetAsync(new EntityDto<int>(borrower.BookId));
+                books.Add(book);
             }
 
-            model.StudentList = student.Items.ToList();
+            model.BookList = books;
+            model.StudentList = student;
             return View(model);
         }
 

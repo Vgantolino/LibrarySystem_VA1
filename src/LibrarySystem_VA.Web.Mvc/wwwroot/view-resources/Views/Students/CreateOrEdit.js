@@ -5,12 +5,17 @@
         _$form = $('form[name=StudentForm]');
 
 
-    //SaveButton
+    //Save
     _$form.find('.save-button').on('click', (e) => {
         e.preventDefault();
         studentSave();
     });
 
+    //Cancel
+    _$form.find('.cancel-button').on('click', (e) => {
+        e.preventDefault();
+        redirectToIndex();
+    });
 
     function studentSave() {
         if (!_$form.valid()) {
@@ -34,15 +39,6 @@
             })
         }
     }
-
-    //CANCEL
-    _$form.find('.cancel-button').on('click', (e) => {
-        e.preventDefault();
-        redirectToIndex();
-    });
-
-
-
 
     function redirectToIndex() {
         window.location.href = "/Students";

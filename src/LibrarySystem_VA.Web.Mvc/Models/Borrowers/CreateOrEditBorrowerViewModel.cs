@@ -13,6 +13,7 @@ namespace LibrarySystem_VA.Web.Models.Borrowers
         public DateTime ExpectedReturnDate { get; set; }
         public DateTime? ReturnDate { get; set; }
         public int? BookId { get; set; }
+        public bool IsBorrowed { get; set; }
         public List<BookDto> BookList { get; set; }
         public int? StudentId { get; set; }
         public List<StudentDto> StudentList { get; set; }

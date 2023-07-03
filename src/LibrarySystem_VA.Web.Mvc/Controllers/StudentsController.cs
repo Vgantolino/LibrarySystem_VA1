@@ -26,8 +26,8 @@ namespace LibrarySystem_VA.Web.Controllers
 
         public async Task<IActionResult> Index(string searchStudent)
         {
-            var students = await _studentAppService.GetAllDepartment(new PagedStudentResultRequestDto { MaxResultCount = int.MaxValue }); //get all the students in DB from appservice
-            var model = new StudentListViewModel(); //ipapasa sa index (controller > html) model >> controller
+            var students = await _studentAppService.GetAllDepartment(new PagedStudentResultRequestDto { MaxResultCount = int.MaxValue });
+            var model = new StudentListViewModel();
 
             if (!string.IsNullOrEmpty(searchStudent))
             {

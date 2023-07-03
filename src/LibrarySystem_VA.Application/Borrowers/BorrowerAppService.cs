@@ -9,6 +9,7 @@ using LibrarySystem_VA.Borrowers.Dto;
 using Abp.Domain.Repositories;
 using Abp.Application.Services.Dto;
 using Microsoft.EntityFrameworkCore;
+using System.Globalization;
 
 namespace LibrarySystem_VA.Borrowers
 {
@@ -16,6 +17,7 @@ namespace LibrarySystem_VA.Borrowers
     {
         private readonly IRepository<Borrower, int> _repository;
         private readonly IRepository<Book> _bookRepository;
+
         public BorrowerAppService(IRepository<Borrower, int> repository, IRepository<Book> bookRepository) : base(repository)
         {
             _repository = repository;
@@ -51,14 +53,11 @@ namespace LibrarySystem_VA.Borrowers
 
         public override async Task<BorrowerDto> UpdateAsync(BorrowerDto input)
         {
-
             try
             {
-                //var borrower = ObjectMapper.Map<Borrower>(input);
-                var borrower = await _repository.GetAll().AsNoTracking().Where(b => b.Id == input.Id).FirstOrDefaultAsync();
-                await _repository.UpdateAsync(borrower);
+                var borrower = await _repository.GetAll().AsNoTracking().Where(x => x.Id == input.Id).FirstOrDefaultAsync();
 
-                if (borrower.ReturnDate.HasValue)
+                if (input.ReturnDate.HasValue)
                 {
                     var book = await _bookRepository.GetAsync(input.BookId);
                     book.IsBorrowed = false;
@@ -70,21 +69,21 @@ namespace LibrarySystem_VA.Borrowers
                     var oldBook = await _bookRepository.GetAsync(borrower.BookId.Value);
                     oldBook.IsBorrowed = false;
                     await _bookRepository.UpdateAsync(oldBook);
-
+                                        
                     var newBook = await _bookRepository.GetAsync(input.BookId);
                     newBook.IsBorrowed = true;
                     await _bookRepository.UpdateAsync(newBook);
                 }
 
                 borrower = ObjectMapper.Map<Borrower>(input);
-                await _repository.UpdateAsync(borrower);
+                await _repository.UpdateAsync(borrower);               
 
                 return base.MapToEntityDto(borrower);
             }
             catch (System.Exception e)
             {
                 throw e;
-            }         
+            }
         }
 
         protected override Task<Borrower> GetEntityByIdAsync(int id)
@@ -101,8 +100,8 @@ namespace LibrarySystem_VA.Borrowers
                 .ToListAsync();
 
             return new PagedResultDto<BorrowerDto>(query.Count(), query);
-        }      
-        
+        }
+
         public async Task<BorrowerDto> GetBorrowerWithBook(int id)
         {
             var borrower = await _repository.GetAll()
@@ -113,5 +112,6 @@ namespace LibrarySystem_VA.Borrowers
 
             return borrower;
         }
+        
     }
 }

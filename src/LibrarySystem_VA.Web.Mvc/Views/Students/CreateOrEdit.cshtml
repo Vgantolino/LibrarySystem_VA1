@@ -24,47 +24,44 @@
             <div class="mx-auto col-10 col-md-8 col-lg-6">
                 <div class="card">
                     <div class="card-body">
-
                         <form class="form-horizontal" name="StudentForm" role="form">
                             <input type="hidden" name="Id" value="@Model?.Id"/>
 
                             @*Student Name*@
                             <div class="form-row">
                                 <div class="form-group col-12">
-                                    <label for="studentName">Student Name</label>
-                                    <input type="text" class="form-control" name="StudentName" value="@Model?.StudentName" placeholder="Student Name"
+                                    <label for="studentName">Student Name<span class="required" style="color:red">*</span></label>
+                                    <input type="text" required class="form-control" name="StudentName" value="@Model?.StudentName" placeholder="Student Name"
                                            style="border-radius:5px; font-size:16px;">
                                 </div>
-                            </div>
 
-                            @*Student Contact Number*@
-                            <div class="form-row">
+                                @*Student Contact Number*@
                                 <div class="form-group col-12">
-                                    <label for="studentContactNumber">Student Contact Number</label>
-                                    <input type="text" class="form-control" name="StudentContactNumber" value="@Model?.StudentContactNumber" placeholder="Student Contact Number"
+                                    <label for="studentContactNumber">Student Contact Number<span class="required" style="color:red">*</span></label>
+                                    <input type="text" required class="form-control" name="StudentContactNumber" value="@Model?.StudentContactNumber" placeholder="Student Contact Number"
                                            style="border-radius:5px; font-size:16px;">
                                 </div>
-                            </div>
 
-                            @*Student Email*@
-                            <div class="form-row">                  
+                                @*Student Email*@
                                 <div class="form-group col-12">
-                                <label for="studentEmail">Student Email</label>
-                                <input type="text" class="form-control" name="StudentEmail" value="@Model?.StudentEmail" placeholder="Student Email"
-                                       style="border-radius:5px; font-size:16px;">
+                                    <label for="studentEmail">Student Email<span class="required" style="color:red">*</span></label>
+                                    <input type="text" required class="form-control" name="StudentEmail" value="@Model?.StudentEmail" placeholder="Student Email"
+                                           style="border-radius:5px; font-size:16px;">
                                 </div>
-                            </div>                            
 
-                            @*Department List*@
-                            <div class="form-row">
+                                @*Department List*@
                                 <div class="form-group col-12">
-                                    <label for="DepartmentList">Department List</label>
-                                            @Html.DropDownListFor(x => x.DepartmentId, 
-                                                Model.DepartmentList.Select(d => new SelectListItem {
-                                                                            Value = d.Id.ToString(),
-                                                                            Text = d.Name}), "Select Department", new { @class = "form-control" })
+                                    <label for="DepartmentList">Department List<span class="required" style="color:red">*</span></label>
+                                    @Html.DropDownListFor(x => x.DepartmentId,
+                                    Model.DepartmentList.Select(d => new SelectListItem {
+                                    Value = d.Id.ToString(),
+                                    Text = d.Name}), "Select Department", new { @class = "form-control", required = "required"})
                                 </div>
-                            </div>
+
+                                <p style="color:#545454;font-family:Helvetica, sans-serif">
+                                    Required field <span class="required" style="color:red; font-family:Helvetica, sans-serif"><b>*</b></span>
+                                </p>
+                            </div>                  
 
                             @*Save/Cancel Buttons*@
                             <div class="form-row">
@@ -75,8 +72,7 @@
                                             style="border-radius:15px; border-color:#0F7173; background:#0F7173; color:#fff; font-size:16px; font-weight:500; text-transform: uppercase">@L("Save")</button>
                                 </div>
                             </div>
-                            </form>
-
+                        </form>
                     </div>
                 </div>
             </div>

@@ -10,13 +10,18 @@
         BookCategorySave();
     });
 
+    //Cancel
+    _$form.find('.cancel-button').on('click', (e) => {
+        e.preventDefault();
+        RedirectToIndex();
+    });
+
     function BookCategorySave() {
         if (!_$form.valid()) {
             return;
         }
 
         var bookCategory = _$form.serializeFormToObject();
-        //bookCategory.DepartmentId = parseInt(bookCategory.DepartmentId);
         abp.ui.setBusy(_$form);
 
         if (bookCategory.Id != 0) { //update
@@ -35,12 +40,6 @@
             });
         }
     }
-
-    //CANCEL
-    _$form.find('.cancel-button').on('click', (e) => {
-        e.preventDefault();
-        RedirectToIndex();
-    });
 
     function RedirectToIndex() {
         window.location.href = "/BookCategories";

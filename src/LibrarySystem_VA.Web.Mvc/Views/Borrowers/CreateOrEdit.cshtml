@@ -57,22 +57,22 @@
                             @*Student Name*@
                             <div class="form-row">
                                 <div class="form-group col-12">
-                                    <label for="StudentList">Student List</label>
+                                    <label for="StudentList">Student List<span class="required" style="color:red">*</span></label>
                                     @Html.DropDownListFor(x => x.StudentId,
                                     Model.StudentList.Select(d => new SelectListItem {
                                     Value = d.Id.ToString(),
-                                    Text = d.StudentName}), "Select Student", new { @class = "form-control" })
+                                    Text = d.StudentName}), "Select Student", new { @class = "form-control", required = "required" })
                                 </div>
                             </div>
 
                             @*Book Title*@
                             <div class="form-row">
                                 <div class="form-group col-12">
-                                    <label for="BookList">Book List</label>
+                                    <label for="BookList">Book List<span class="required" style="color:red">*</span></label>
                                     @Html.DropDownListFor(x => x.BookId,
-                                        Model.BookList.Select(d => new SelectListItem {
-                                                      Value = d.Id.ToString(),
-                                                       Text = d.BookTitle}), "Select Books", new { @class = "form-control" })
+                                    Model.BookList.Select(d => new SelectListItem {
+                                    Value = d.Id.ToString(),
+                                    Text = d.BookTitle}), "Select Books", new { @class = "form-control", required = "required" })
                                 </div>
                             </div>                            
 
