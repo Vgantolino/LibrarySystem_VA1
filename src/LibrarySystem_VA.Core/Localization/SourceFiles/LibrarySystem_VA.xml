@@ -121,7 +121,7 @@
 	//Department
 	<text name="DeptID">Department ID</text>
 	<text name="DeptName">Department Name</text>
-	<text name="Departments">Department</text>
+	<text name="Departments">Departments</text>
 	<text name="CreateDeptName">Name</text>
 	<text name="NewDepartmentForm">Department Entry Form</text>
 	
@@ -135,7 +135,7 @@
 	<text name="NewStudentForm">Student Entry Form</text>
 
 	//BookCategory
-	<text name="BookCategories">Book Category</text>
+	<text name="BookCategories">Book Categories</text>
 	<text name="BookCategoryName">Book Category Name</text>
 	<text name="AddNewBookCategory">Book Category Entry Form</text>
 	<text name="BookCategoryId">Book Category Id</text>
